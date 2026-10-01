@@ -280,3 +280,18 @@ C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-basic-cus
 C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-basic-customer-list\InsuranceManagement.MVC.runtimeconfig.json
 C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-basic-customer-list\InsuranceManagement.MVC.dll
 C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-basic-customer-list\InsuranceManagement.MVC.pdb
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-repository\appsettings.Development.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-repository\appsettings.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-repository\InsuranceManagement.MVC.staticwebassets.runtime.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-repository\InsuranceManagement.MVC.deps.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-repository\InsuranceManagement.MVC.runtimeconfig.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-repository\InsuranceManagement.MVC.dll
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-repository\InsuranceManagement.MVC.pdb
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\Debug\net8.0\InsuranceManagement.MVC.sourcelink.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-service-layer\appsettings.Development.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-service-layer\appsettings.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-service-layer\InsuranceManagement.MVC.staticwebassets.runtime.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-service-layer\InsuranceManagement.MVC.deps.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-service-layer\InsuranceManagement.MVC.runtimeconfig.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-service-layer\InsuranceManagement.MVC.dll
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-service-layer\InsuranceManagement.MVC.pdb

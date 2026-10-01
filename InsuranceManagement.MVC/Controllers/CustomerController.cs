@@ -1,26 +1,24 @@
-using InsuranceManagement.MVC.Data;
-using InsuranceManagement.MVC.Models;
-using InsuranceManagement.MVC.ViewModels;
+using InsuranceManagement.MVC.Models; //model represents database tables
+using InsuranceManagement.MVC.Services;
+using InsuranceManagement.MVC.ViewModels; //Database Entity → ViewModel → View
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace InsuranceManagement.MVC.Controllers;
 
-public class CustomerController : Controller
+public class CustomerController : Controller // controller class for customer management
 {
-    private readonly ApplicationDbContext _context;
+    private readonly ICustomerService _customerService;
 
-    public CustomerController(ApplicationDbContext context)
+    public CustomerController(ICustomerService customerService)
     {
-        _context = context;
+        _customerService = customerService;
     }
 
     public async Task<IActionResult> Index(CancellationToken cancellationToken)
     {
-        var customers = await _context.Customers
-            .AsNoTracking()
-            .OrderBy(customer => customer.Name)
-            .ThenBy(customer => customer.Id)
+        var customers = await _customerService.GetAllAsync(cancellationToken);
+
+        var customerViewModels = customers
             .Select(customer => new CustomerListItemViewModel
             {
                 Id = customer.Id,
@@ -28,27 +26,21 @@ public class CustomerController : Controller
                 Email = customer.Email,
                 PhoneNumber = customer.PhoneNumber
             })
-            .ToListAsync(cancellationToken);
+            .ToList();
 
-        return View(new CustomerListViewModel { Customers = customers });
+        return View(new CustomerListViewModel { Customers = customerViewModels });
     }
 
     public async Task<IActionResult> Details(int id, CancellationToken cancellationToken)
     {
-        var customer = await _context.Customers
-            .AsNoTracking()
-            .Where(customer => customer.Id == id)
-            .Select(customer => new CustomerDetailsViewModel
-            {
-                Id = customer.Id,
-                Name = customer.Name,
-                Email = customer.Email,
-                PhoneNumber = customer.PhoneNumber,
-                Address = customer.Address
-            })
-            .FirstOrDefaultAsync(cancellationToken);
+        var customer = await _customerService.GetByIdAsync(id, cancellationToken);
 
-        return customer is null ? NotFound() : View(customer);
+        if (customer is null)
+        {
+            return NotFound();
+        }
+
+        return View(ToDetailsViewModel(customer));
     }
 
     [HttpGet]
@@ -76,8 +68,7 @@ public class CustomerController : Controller
             Address = input.Address
         };
 
-        _context.Customers.Add(customer);
-        await _context.SaveChangesAsync(cancellationToken);
+        await _customerService.CreateAsync(customer, cancellationToken);
 
         TempData["SuccessMessage"] = "Customer created successfully.";
         return RedirectToAction(nameof(Index));
@@ -86,9 +77,7 @@ public class CustomerController : Controller
     [HttpGet]
     public async Task<IActionResult> Edit(int id, CancellationToken cancellationToken)
     {
-        var customer = await _context.Customers
-            .AsNoTracking()
-            .FirstOrDefaultAsync(customer => customer.Id == id, cancellationToken);
+        var customer = await _customerService.GetByIdAsync(id, cancellationToken);
 
         if (customer is null)
         {
@@ -116,19 +105,18 @@ public class CustomerController : Controller
             return View(input);
         }
 
-        var customer = await _context.Customers.FindAsync([id], cancellationToken);
+        var updated = await _customerService.UpdateAsync(id, new Customer
+        {
+            Name = input.Name,
+            Email = input.Email,
+            PhoneNumber = input.PhoneNumber,
+            Address = input.Address
+        }, cancellationToken);
 
-        if (customer is null)
+        if (!updated)
         {
             return NotFound();
         }
-
-        customer.Name = input.Name;
-        customer.Email = input.Email;
-        customer.PhoneNumber = input.PhoneNumber;
-        customer.Address = input.Address;
-
-        await _context.SaveChangesAsync(cancellationToken);
 
         TempData["SuccessMessage"] = "Customer updated successfully.";
         return RedirectToAction(nameof(Index));
@@ -137,37 +125,60 @@ public class CustomerController : Controller
     [HttpGet]
     public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)
     {
-        var customer = await _context.Customers
-            .AsNoTracking()
-            .Where(customer => customer.Id == id)
-            .Select(customer => new CustomerDetailsViewModel
-            {
-                Id = customer.Id,
-                Name = customer.Name,
-                Email = customer.Email,
-                PhoneNumber = customer.PhoneNumber,
-                Address = customer.Address
-            })
-            .FirstOrDefaultAsync(cancellationToken);
-
-        return customer is null ? NotFound() : View(customer);
-    }
-
-    [HttpPost, ActionName("Delete")]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int id, CancellationToken cancellationToken)
-    {
-        var customer = await _context.Customers.FindAsync([id], cancellationToken);
+        var customer = await _customerService.GetByIdAsync(id, cancellationToken);
 
         if (customer is null)
         {
             return NotFound();
         }
 
-        _context.Customers.Remove(customer);
-        await _context.SaveChangesAsync(cancellationToken);
+        var viewModel = ToDetailsViewModel(customer);
+        viewModel = new CustomerDetailsViewModel
+        {
+            Id = viewModel.Id,
+            Name = viewModel.Name,
+            Email = viewModel.Email,
+            PhoneNumber = viewModel.PhoneNumber,
+            Address = viewModel.Address,
+            HasPolicies = await _customerService.HasPoliciesAsync(id, cancellationToken)
+        };
+        return View(viewModel);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(int id, CancellationToken cancellationToken)
+    {
+        if (await _customerService.GetByIdAsync(id, cancellationToken) is null)
+        {
+            return NotFound();
+        }
+
+        if (await _customerService.HasPoliciesAsync(id, cancellationToken))
+        {
+            TempData["ErrorMessage"] = "This customer has policies and cannot be deleted.";
+            return RedirectToAction(nameof(Index));
+        }
+
+        var deleted = await _customerService.DeleteAsync(id, cancellationToken);
+        if (!deleted)
+        {
+            return NotFound();
+        }
 
         TempData["SuccessMessage"] = "Customer deleted successfully.";
         return RedirectToAction(nameof(Index));
+    }
+
+    private static CustomerDetailsViewModel ToDetailsViewModel(Customer customer)
+    {
+        return new CustomerDetailsViewModel
+        {
+            Id = customer.Id,
+            Name = customer.Name,
+            Email = customer.Email,
+            PhoneNumber = customer.PhoneNumber,
+            Address = customer.Address
+        };
     }
 }

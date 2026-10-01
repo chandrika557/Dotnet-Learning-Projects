@@ -1,0 +1,61 @@
+@model PolicyFormViewModel
+
+@{
+    ViewData["Title"] = "Create Policy";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm">
+            <div class="card-header"><h1 class="h4 mb-0">Create Policy</h1></div>
+            <div class="card-body">
+                @if (Model.CustomerOptions.Count == 0)
+                {
+                    <div class="alert alert-info">
+                        Create a customer before adding a policy.
+                        <a asp-controller="Customer" asp-action="Create">Add Customer</a>
+                    </div>
+                }
+
+                <form asp-action="Create" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <div class="mb-3">
+                        <label asp-for="CustomerId" class="form-label"></label>
+                        <select asp-for="CustomerId" asp-items="Model.CustomerOptions" class="form-select">
+                            <option value="">-- Select a customer --</option>
+                        </select>
+                        <span asp-validation-for="CustomerId" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="PolicyName" class="form-label"></label>
+                        <input asp-for="PolicyName" class="form-control" placeholder="e.g. Family Health Plan" />
+                        <span asp-validation-for="PolicyName" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="PolicyType" class="form-label"></label>
+                        <select asp-for="PolicyType" asp-items="Html.GetEnumSelectList<PolicyType>()" class="form-select">
+                            <option value="">-- Select a type --</option>
+                        </select>
+                        <span asp-validation-for="PolicyType" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="CoverageAmount" class="form-label"></label>
+                        <input asp-for="CoverageAmount" type="number" min="0.01" step="0.01" class="form-control" />
+                        <span asp-validation-for="CoverageAmount" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="PremiumAmount" class="form-label"></label>
+                        <input asp-for="PremiumAmount" type="number" min="0.01" step="0.01" class="form-control" />
+                        <span asp-validation-for="PremiumAmount" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary" disabled="@(Model.CustomerOptions.Count == 0)">Save Policy</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -7,4 +7,5 @@ public sealed class CustomerDetailsViewModel
     public string? Email { get; init; }
     public string? PhoneNumber { get; init; }
     public string? Address { get; init; }
+    public bool HasPolicies { get; init; }
 }
