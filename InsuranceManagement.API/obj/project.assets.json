@@ -4899,11 +4899,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\JayaChandrikaEdiga\\Downloads\\.Net Project Practice\\InsuranceManagement.API\\InsuranceManagement.API.csproj",
+      "projectUniqueName": "C:\\Users\\JayaChandrikaEdiga\\Downloads\\.Net Project Practice\\InsuranceManagement.API\\InsuranceManagement.API.csproj",
       "projectName": "InsuranceManagement.API",
-      "projectPath": "c:\\Users\\JayaChandrikaEdiga\\Downloads\\.Net Project Practice\\InsuranceManagement.API\\InsuranceManagement.API.csproj",
+      "projectPath": "C:\\Users\\JayaChandrikaEdiga\\Downloads\\.Net Project Practice\\InsuranceManagement.API\\InsuranceManagement.API.csproj",
       "packagesPath": "C:\\Users\\JayaChandrikaEdiga\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\JayaChandrikaEdiga\\Downloads\\.Net Project Practice\\InsuranceManagement.API\\obj\\",
+      "outputPath": "C:\\Users\\JayaChandrikaEdiga\\Downloads\\.Net Project Practice\\InsuranceManagement.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\JayaChandrikaEdiga\\AppData\\Roaming\\NuGet\\NuGet.Config"
