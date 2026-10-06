@@ -5,11 +5,11 @@ namespace InsuranceManagement.MVC.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) //base constructor to pass options to the DbContext
         {
         }
 
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Customer> Customers { get; set; } // DbSet for Customer entity
         public DbSet<Policy> Policies { get; set; }
         public DbSet<Claim> Claims { get; set; }
 

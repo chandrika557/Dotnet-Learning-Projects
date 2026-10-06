@@ -1,6 +1,6 @@
 namespace InsuranceManagement.MVC.Models;
 
-public class Claim
+public class Claim // Class to represent an insurance claim (dtos)
 {
     public int ClaimId { get; set; }
     public int PolicyId { get; set; }

@@ -8,18 +8,18 @@ public sealed class ClaimService : IClaimService
     private readonly IClaimRepository _claimRepository;
     private readonly IPolicyRepository _policyRepository;
 
-    public ClaimService(IClaimRepository claimRepository, IPolicyRepository policyRepository)
+    public ClaimService(IClaimRepository claimRepository, IPolicyRepository policyRepository) //constructor injection for claim and policy repositories
     {
         _claimRepository = claimRepository;
         _policyRepository = policyRepository;
     }
 
-    public Task<IReadOnlyList<Claim>> GetAllAsync(CancellationToken cancellationToken)
+    public Task<IReadOnlyList<Claim>> GetAllAsync(CancellationToken cancellationToken) //method to retrieve all claims from the repository
     {
         return _claimRepository.GetAllAsync(cancellationToken);
     }
 
-    public async Task<ClaimCreationResult> CreateAsync(
+    public async Task<ClaimCreationResult> CreateAsync( //method to create a new claim
         Claim claim,
         CancellationToken cancellationToken)
     {
@@ -42,7 +42,7 @@ public sealed class ClaimService : IClaimService
         return ClaimCreationResult.Created;
     }
 
-    public async Task<bool> SetStatusAsync(
+    public async Task<bool> SetStatusAsync( //method to set the status of a claim
         int id,
         ClaimStatus status,
         CancellationToken cancellationToken)

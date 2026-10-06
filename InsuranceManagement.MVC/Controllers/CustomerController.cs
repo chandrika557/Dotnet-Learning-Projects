@@ -7,16 +7,16 @@ namespace InsuranceManagement.MVC.Controllers;
 
 public class CustomerController : Controller // controller class for customer management
 {
-    private readonly ICustomerService _customerService;
+    private readonly ICustomerService _customerService;  // private field to hold the customer service instance
 
-    public CustomerController(ICustomerService customerService)
+    public CustomerController(ICustomerService customerService) // constructor injection for customer service
     {
-        _customerService = customerService;
+        _customerService = customerService; 
     }
 
-    public async Task<IActionResult> Index(CancellationToken cancellationToken)
+    public async Task<IActionResult> Index(CancellationToken cancellationToken) // method to retrieve all customers and display them in the view
     {
-        var customers = await _customerService.GetAllAsync(cancellationToken);
+        var customers = await _customerService.GetAllAsync(cancellationToken); // Retrieve all customers from the service
 
         var customerViewModels = customers
             .Select(customer => new CustomerListItemViewModel
@@ -28,7 +28,7 @@ public class CustomerController : Controller // controller class for customer ma
             })
             .ToList();
 
-        return View(new CustomerListViewModel { Customers = customerViewModels });
+        return View(new CustomerListViewModel { Customers = customerViewModels }); // Pass the list of customer view models to the view
     }
 
     public async Task<IActionResult> Details(int id, CancellationToken cancellationToken)
@@ -40,7 +40,7 @@ public class CustomerController : Controller // controller class for customer ma
             return NotFound();
         }
 
-        return View(ToDetailsViewModel(customer));
+        return View(ToDetailsViewModel(customer)); // Convert the Customer model to a CustomerDetailsViewModel and pass it to the view
     }
 
     [HttpGet]
@@ -50,17 +50,17 @@ public class CustomerController : Controller // controller class for customer ma
     }
 
     [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(
+    [ValidateAntiForgeryToken] // to prevent CSRF attacks
+    public async Task<IActionResult> Create( // method to create a new customer
         CustomerFormViewModel input,
         CancellationToken cancellationToken)
     {
-        if (!ModelState.IsValid)
+        if (!ModelState.IsValid) 
         {
             return View(input);
         }
 
-        var customer = new Customer
+        var customer = new Customer 
         {
             Name = input.Name,
             Email = input.Email,
@@ -68,18 +68,18 @@ public class CustomerController : Controller // controller class for customer ma
             Address = input.Address
         };
 
-        await _customerService.CreateAsync(customer, cancellationToken);
+        await _customerService.CreateAsync(customer, cancellationToken); // Call the CreateAsync method of the customer service to create a new customer
 
-        TempData["SuccessMessage"] = "Customer created successfully.";
-        return RedirectToAction(nameof(Index));
+        TempData["SuccessMessage"] = "Customer created successfully."; // Store a success message in TempData to display it on the next page
+        return RedirectToAction(nameof(Index)); // Redirect to the Index action to display the list of customers
     }
 
     [HttpGet]
-    public async Task<IActionResult> Edit(int id, CancellationToken cancellationToken)
+    public async Task<IActionResult> Edit(int id, CancellationToken cancellationToken) // method to retrieve a customer by ID and display the edit form
     {
-        var customer = await _customerService.GetByIdAsync(id, cancellationToken);
+        var customer = await _customerService.GetByIdAsync(id, cancellationToken); // Retrieve the customer by ID from the service
 
-        if (customer is null)
+        if (customer is null) //check if the customer is null, which means that the customer with the specified ID does not exist
         {
             return NotFound();
         }
@@ -125,7 +125,7 @@ public class CustomerController : Controller // controller class for customer ma
     [HttpGet]
     public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)
     {
-        var customer = await _customerService.GetByIdAsync(id, cancellationToken);
+        var customer = await _customerService.GetByIdAsync(id, cancellationToken); //
 
         if (customer is null)
         {
@@ -167,7 +167,7 @@ public class CustomerController : Controller // controller class for customer ma
         }
 
         TempData["SuccessMessage"] = "Customer deleted successfully.";
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(Index)); //redirect to the Index action to display the list of customers after successful deletion
     }
 
     private static CustomerDetailsViewModel ToDetailsViewModel(Customer customer)

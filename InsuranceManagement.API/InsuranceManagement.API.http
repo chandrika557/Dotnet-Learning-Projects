@@ -1,0 +1,47 @@
+@InsuranceManagement.API_HostAddress = http://localhost:5209
+
+### Get all customers
+GET {{InsuranceManagement.API_HostAddress}}/api/customers
+Accept: application/json
+
+### Get an existing customer
+GET {{InsuranceManagement.API_HostAddress}}/api/customers/1
+Accept: application/json
+
+### Get a customer that does not exist
+GET {{InsuranceManagement.API_HostAddress}}/api/customers/999999
+Accept: application/json
+
+### Create a customer
+POST {{InsuranceManagement.API_HostAddress}}/api/customers
+Content-Type: application/json
+
+{
+  "name": "Ava Patel",
+  "email": "ava.patel@example.com",
+  "phoneNumber": "555-0102",
+  "address": "100 Market Street"
+}
+
+### Create a customer with invalid data (expected 400)
+POST {{InsuranceManagement.API_HostAddress}}/api/customers
+Content-Type: application/json
+
+{
+  "name": " ",
+  "email": "not-an-email"
+}
+
+### Replace a customer's details
+PUT {{InsuranceManagement.API_HostAddress}}/api/customers/1
+Content-Type: application/json
+
+{
+  "name": "Ava Patel",
+  "email": "ava.patel@example.com",
+  "phoneNumber": "555-0199",
+  "address": "200 Market Street"
+}
+
+### Delete a customer
+DELETE {{InsuranceManagement.API_HostAddress}}/api/customers/1
