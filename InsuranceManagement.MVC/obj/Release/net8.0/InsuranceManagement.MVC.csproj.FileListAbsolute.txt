@@ -140,3 +140,12 @@ C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.
 C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\Release\net8.0\InsuranceManagement.MVC.pdb
 C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\Release\net8.0\InsuranceManagement.MVC.genruntimeconfig.cache
 C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\Release\net8.0\ref\InsuranceManagement.MVC.dll
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\bin\Release\net8.0\InsuranceManagement.MVC.exe
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\Release\net8.0\InsuranceManagement.MVC.sourcelink.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-policy-model\appsettings.Development.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-policy-model\appsettings.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-policy-model\InsuranceManagement.MVC.staticwebassets.runtime.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-policy-model\InsuranceManagement.MVC.deps.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-policy-model\InsuranceManagement.MVC.runtimeconfig.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-policy-model\InsuranceManagement.MVC.dll
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-policy-model\InsuranceManagement.MVC.pdb

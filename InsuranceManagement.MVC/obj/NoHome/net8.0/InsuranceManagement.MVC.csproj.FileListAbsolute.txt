@@ -1,0 +1,32 @@
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\InsuranceManagement.MVC.csproj.AssemblyReference.cache
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\InsuranceManagement.MVC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\InsuranceManagement.MVC.AssemblyInfoInputs.cache
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\InsuranceManagement.MVC.AssemblyInfo.cs
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\InsuranceManagement.MVC.csproj.CoreCompileInputs.cache
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\InsuranceManagement.MVC.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\InsuranceManagement.MVC.RazorAssemblyInfo.cache
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\InsuranceManagement.MVC.RazorAssemblyInfo.cs
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\InsuranceManagement.MVC.sourcelink.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-no-home\appsettings.Development.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-no-home\appsettings.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-no-home\InsuranceManagement.MVC.staticwebassets.runtime.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-no-home\InsuranceManagement.MVC.deps.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-no-home\InsuranceManagement.MVC.runtimeconfig.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-no-home\InsuranceManagement.MVC.dll
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InsuranceManagement.MVC-no-home\InsuranceManagement.MVC.pdb
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\staticwebassets.build.json
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\staticwebassets.development.json
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\staticwebassets\msbuild.InsuranceManagement.MVC.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\staticwebassets\msbuild.build.InsuranceManagement.MVC.props
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\staticwebassets\msbuild.buildMultiTargeting.InsuranceManagement.MVC.props
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\staticwebassets\msbuild.buildTransitive.InsuranceManagement.MVC.props
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\staticwebassets.pack.json
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\scopedcss\bundle\InsuranceManagement.MVC.styles.css
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\scopedcss\projectbundle\InsuranceManagement.MVC.bundle.scp.css
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\Insuranc.1B624B09.Up2Date
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\InsuranceManagement.MVC.dll
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\refint\InsuranceManagement.MVC.dll
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\InsuranceManagement.MVC.pdb
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\InsuranceManagement.MVC.genruntimeconfig.cache
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.MVC\obj\NoHome\net8.0\ref\InsuranceManagement.MVC.dll

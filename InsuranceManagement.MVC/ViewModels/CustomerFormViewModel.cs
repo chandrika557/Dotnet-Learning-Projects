@@ -2,11 +2,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace InsuranceManagement.MVC.ViewModels;
 
-public sealed class CustomerFormViewModel
+public sealed class CustomerFormViewModel // ViewModel class for customer form
 {
     [Required]
     [StringLength(100)]
-    [Display(Name = "Customer name")]
+    [Display(Name = "Customer name")] // Display attribute to specify the display name for the property
     public string Name { get; set; } = string.Empty;
 
     [Required]

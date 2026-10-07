@@ -1,0 +1,22 @@
+@model PolicyDetailsViewModel
+
+@{
+    ViewData["Title"] = "Policy Details";
+}
+
+<div class="card shadow-sm">
+    <div class="card-header"><h1 class="h4 mb-0">Policy Details</h1></div>
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Policy name</dt><dd class="col-sm-9">@Model.PolicyName</dd>
+            <dt class="col-sm-3">Type</dt><dd class="col-sm-9">@Model.PolicyType</dd>
+            <dt class="col-sm-3">Customer</dt><dd class="col-sm-9">@Model.CustomerName</dd>
+            <dt class="col-sm-3">Coverage</dt><dd class="col-sm-9">@Model.CoverageAmount.ToString("C")</dd>
+            <dt class="col-sm-3">Premium</dt><dd class="col-sm-9">@Model.PremiumAmount.ToString("C")</dd>
+        </dl>
+    </div>
+    <div class="card-footer d-flex gap-2">
+        <a asp-action="Edit" asp-route-id="@Model.PolicyId" class="btn btn-primary">Edit</a>
+        <a asp-action="Index" class="btn btn-outline-secondary">Back to policies</a>
+    </div>
+</div>
