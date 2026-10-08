@@ -39,7 +39,9 @@ builder.Services.AddScoped<IClaimService, ClaimService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IPasswordHasher<UserAccount>, PasswordHasher<UserAccount>>();
-builder.Services.AddAutoMapper(typeof(InsuranceMappingProfile).Assembly);
+builder.Services.AddAutoMapper(
+    configuration => configuration.LicenseKey = builder.Configuration["AutoMapper:LicenseKey"],
+    typeof(InsuranceMappingProfile).Assembly);
 builder.Services.AddValidatorsFromAssemblyContaining<CreateCustomerRequestValidator>();
 builder.Services.AddScoped(typeof(ValidationFilter<>));
 

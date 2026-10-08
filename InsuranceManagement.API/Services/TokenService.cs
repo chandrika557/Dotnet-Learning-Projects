@@ -18,11 +18,11 @@ public sealed class TokenService(IOptions<JwtOptions> options) : ITokenService
         var expiresAt = DateTimeOffset.UtcNow.AddMinutes(_options.AccessTokenMinutes);
         var claims = new[]
         {
-            new Claim(JwtRegisteredClaimNames.Sub, userAccount.UserAccountId.ToString()),
-            new Claim(ClaimTypes.NameIdentifier, userAccount.UserAccountId.ToString()),
-            new Claim(ClaimTypes.Email, userAccount.Email),
-            new Claim(ClaimTypes.Role, userAccount.Role),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            new System.Security.Claims.Claim(JwtRegisteredClaimNames.Sub, userAccount.UserAccountId.ToString()),
+            new System.Security.Claims.Claim(ClaimTypes.NameIdentifier, userAccount.UserAccountId.ToString()),
+            new System.Security.Claims.Claim(ClaimTypes.Email, userAccount.Email),
+            new System.Security.Claims.Claim(ClaimTypes.Role, userAccount.Role),
+            new System.Security.Claims.Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
 
         var credentials = new SigningCredentials(

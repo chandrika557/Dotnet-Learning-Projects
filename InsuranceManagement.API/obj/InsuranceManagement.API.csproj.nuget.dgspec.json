@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JayaChandrikaEdiga\\Downloads\\.Net Project Practice\\InsuranceManagement.API\\InsuranceManagement.API.csproj": {}
+    "c:\\Users\\JayaChandrikaEdiga\\Downloads\\.Net Project Practice\\InsuranceManagement.API\\InsuranceManagement.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JayaChandrikaEdiga\\Downloads\\.Net Project Practice\\InsuranceManagement.API\\InsuranceManagement.API.csproj": {
+    "c:\\Users\\JayaChandrikaEdiga\\Downloads\\.Net Project Practice\\InsuranceManagement.API\\InsuranceManagement.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JayaChandrikaEdiga\\Downloads\\.Net Project Practice\\InsuranceManagement.API\\InsuranceManagement.API.csproj",
+        "projectUniqueName": "c:\\Users\\JayaChandrikaEdiga\\Downloads\\.Net Project Practice\\InsuranceManagement.API\\InsuranceManagement.API.csproj",
         "projectName": "InsuranceManagement.API",
-        "projectPath": "C:\\Users\\JayaChandrikaEdiga\\Downloads\\.Net Project Practice\\InsuranceManagement.API\\InsuranceManagement.API.csproj",
+        "projectPath": "c:\\Users\\JayaChandrikaEdiga\\Downloads\\.Net Project Practice\\InsuranceManagement.API\\InsuranceManagement.API.csproj",
         "packagesPath": "C:\\Users\\JayaChandrikaEdiga\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JayaChandrikaEdiga\\Downloads\\.Net Project Practice\\InsuranceManagement.API\\obj\\",
+        "outputPath": "c:\\Users\\JayaChandrikaEdiga\\Downloads\\.Net Project Practice\\InsuranceManagement.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\JayaChandrikaEdiga\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -45,7 +45,7 @@
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
-              "version": "[13.0.1, )"
+              "version": "[15.1.1, )"
             },
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
