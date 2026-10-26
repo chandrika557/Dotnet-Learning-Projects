@@ -4,66 +4,32 @@
         <name>InsuranceManagement.API</name>
     </assembly>
     <members>
-        <member name="T:InsuranceManagement.API.Data.ApplicationDbContext">
-            <summary>Provides EF Core access to the insurance API database.</summary>
+        <member name="T:InsuranceManagement.API.DTOs.CreateDemoItemRequest">
+            <summary>Request body for adding an item to the in-memory demo collection.</summary>
         </member>
-        <member name="M:InsuranceManagement.API.Data.ApplicationDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{InsuranceManagement.API.Data.ApplicationDbContext})">
-            <summary>Provides EF Core access to the insurance API database.</summary>
+        <member name="P:InsuranceManagement.API.DTOs.CreateDemoItemRequest.Name">
+            <summary>Gets the item name.</summary>
         </member>
-        <member name="P:InsuranceManagement.API.Data.ApplicationDbContext.Customers">
-            <summary>Gets the customers table.</summary>
+        <member name="T:InsuranceManagement.API.DTOs.DemoItemResponse">
+            <summary>Represents an item in the in-memory demo collection.</summary>
         </member>
-        <member name="M:InsuranceManagement.API.Data.ApplicationDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <summary>Configures the insurance entities and their database constraints.</summary>
-            <param name="modelBuilder">The builder used to configure the entity model.</param>
+        <member name="M:InsuranceManagement.API.DTOs.DemoItemResponse.#ctor(System.Int32,System.String,System.DateTimeOffset)">
+            <summary>Represents an item in the in-memory demo collection.</summary>
         </member>
-        <member name="T:InsuranceManagement.API.Data.Migrations.InitialCreate">
-            <inheritdoc />
+        <member name="T:InsuranceManagement.API.Endpoints.AuthEndpoints">
+            <summary>Maps public account and administrator role-management endpoints.</summary>
         </member>
-        <member name="M:InsuranceManagement.API.Data.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
+        <member name="M:InsuranceManagement.API.Endpoints.AuthEndpoints.MapAuth(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)">
+            <summary>Maps registration, login, and role-management routes.</summary>
         </member>
-        <member name="M:InsuranceManagement.API.Data.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
+        <member name="T:InsuranceManagement.API.Endpoints.AuthorizeOperationFilter">
+            <summary>Documents bearer authentication only on endpoints that require authorization.</summary>
         </member>
-        <member name="M:InsuranceManagement.API.Data.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
+        <member name="T:InsuranceManagement.API.Endpoints.ClaimEndpoints">
+            <summary>Maps HTTP endpoints for insurance claims.</summary>
         </member>
-        <member name="T:InsuranceManagement.API.DTOs.CreateCustomerRequest">
-            <summary>Request body for creating an insurance customer.</summary>
-        </member>
-        <member name="P:InsuranceManagement.API.DTOs.CreateCustomerRequest.Name">
-            <summary>Customer's full name.</summary>
-        </member>
-        <member name="P:InsuranceManagement.API.DTOs.CreateCustomerRequest.Email">
-            <summary>Optional email address for the customer.</summary>
-        </member>
-        <member name="P:InsuranceManagement.API.DTOs.CreateCustomerRequest.PhoneNumber">
-            <summary>Optional phone number for the customer.</summary>
-        </member>
-        <member name="P:InsuranceManagement.API.DTOs.CreateCustomerRequest.Address">
-            <summary>Optional mailing address for the customer.</summary>
-        </member>
-        <member name="T:InsuranceManagement.API.DTOs.CustomerResponse">
-            <summary>Customer details returned by the insurance management API.</summary>
-        </member>
-        <member name="M:InsuranceManagement.API.DTOs.CustomerResponse.#ctor(System.Int32,System.String,System.String,System.String,System.String)">
-            <summary>Customer details returned by the insurance management API.</summary>
-        </member>
-        <member name="T:InsuranceManagement.API.DTOs.UpdateCustomerRequest">
-            <summary>Request body for replacing an insurance customer's details.</summary>
-        </member>
-        <member name="P:InsuranceManagement.API.DTOs.UpdateCustomerRequest.Name">
-            <summary>Customer's full name.</summary>
-        </member>
-        <member name="P:InsuranceManagement.API.DTOs.UpdateCustomerRequest.Email">
-            <summary>Optional email address for the customer.</summary>
-        </member>
-        <member name="P:InsuranceManagement.API.DTOs.UpdateCustomerRequest.PhoneNumber">
-            <summary>Optional phone number for the customer.</summary>
-        </member>
-        <member name="P:InsuranceManagement.API.DTOs.UpdateCustomerRequest.Address">
-            <summary>Optional mailing address for the customer.</summary>
+        <member name="M:InsuranceManagement.API.Endpoints.ClaimEndpoints.MapClaims(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)">
+            <summary>Maps claim routes onto the application.</summary>
         </member>
         <member name="T:InsuranceManagement.API.Endpoints.CustomerEndpoints">
             <summary>Maps HTTP endpoints for customer management.</summary>
@@ -71,73 +37,68 @@
         <member name="M:InsuranceManagement.API.Endpoints.CustomerEndpoints.MapCustomers(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)">
             <summary>Maps the customer CRUD routes onto the application.</summary>
         </member>
-        <member name="T:InsuranceManagement.API.Models.Customer">
-            <summary>Represents a customer stored in the insurance database.</summary>
+        <member name="T:InsuranceManagement.API.Endpoints.DemoItemEndpoints">
+            <summary>Maps the beginner-friendly in-memory demo item routes.</summary>
         </member>
-        <member name="P:InsuranceManagement.API.Models.Customer.Id">
-            <summary>Gets or sets the database-generated customer identifier.</summary>
+        <member name="M:InsuranceManagement.API.Endpoints.DemoItemEndpoints.MapDemoItemEndpoints(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)">
+            <summary>Maps read and create routes for demo items.</summary>
         </member>
-        <member name="P:InsuranceManagement.API.Models.Customer.Name">
-            <summary>Gets or sets the customer's full name.</summary>
+        <member name="T:InsuranceManagement.API.Endpoints.PolicyEndpoints">
+            <summary>Maps HTTP endpoints for insurance policies.</summary>
         </member>
-        <member name="P:InsuranceManagement.API.Models.Customer.Email">
-            <summary>Gets or sets the customer's optional email address.</summary>
+        <member name="M:InsuranceManagement.API.Endpoints.PolicyEndpoints.MapPolicies(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)">
+            <summary>Maps policy routes onto the application.</summary>
         </member>
-        <member name="P:InsuranceManagement.API.Models.Customer.PhoneNumber">
-            <summary>Gets or sets the customer's optional phone number.</summary>
+        <member name="T:InsuranceManagement.API.Endpoints.ValidationFilter`1">
+            <summary>Runs FluentValidation for endpoint request bodies and returns validation Problem Details.</summary>
         </member>
-        <member name="P:InsuranceManagement.API.Models.Customer.Address">
-            <summary>Gets or sets the customer's optional mailing address.</summary>
+        <member name="M:InsuranceManagement.API.Endpoints.ValidationFilter`1.#ctor(FluentValidation.IValidator{`0})">
+            <summary>Runs FluentValidation for endpoint request bodies and returns validation Problem Details.</summary>
         </member>
-        <member name="T:InsuranceManagement.API.Repositories.CustomerRepository">
-            <summary>Implements customer persistence operations with Entity Framework Core.</summary>
+        <member name="T:InsuranceManagement.API.Middleware.ApiExceptionHandler">
+            <summary>Maps expected application exceptions to safe Problem Details responses.</summary>
         </member>
-        <member name="M:InsuranceManagement.API.Repositories.CustomerRepository.#ctor(InsuranceManagement.API.Data.ApplicationDbContext)">
-            <summary>Implements customer persistence operations with Entity Framework Core.</summary>
+        <member name="M:InsuranceManagement.API.Middleware.ApiExceptionHandler.#ctor(Microsoft.Extensions.Logging.ILogger{InsuranceManagement.API.Middleware.ApiExceptionHandler})">
+            <summary>Maps expected application exceptions to safe Problem Details responses.</summary>
         </member>
-        <member name="M:InsuranceManagement.API.Repositories.CustomerRepository.GetAllAsync(System.Threading.CancellationToken)">
-            <inheritdoc />
+        <member name="T:InsuranceManagement.API.Services.AdministratorBootstrapper">
+            <summary>Creates the initial administrator only when explicit bootstrap credentials are configured.</summary>
         </member>
-        <member name="M:InsuranceManagement.API.Repositories.CustomerRepository.GetByIdAsync(System.Int32,System.Threading.CancellationToken)">
-            <inheritdoc />
+        <member name="T:InsuranceManagement.API.Services.DemoItemStore">
+            <summary>Stores demo items in memory for the lifetime of the API process.</summary>
         </member>
-        <member name="M:InsuranceManagement.API.Repositories.CustomerRepository.AddAsync(InsuranceManagement.API.Models.Customer,System.Threading.CancellationToken)">
-            <inheritdoc />
+        <member name="M:InsuranceManagement.API.Services.DemoItemStore.GetAll">
+            <summary>Gets all demo items ordered by ID.</summary>
         </member>
-        <member name="M:InsuranceManagement.API.Repositories.CustomerRepository.UpdateAsync(InsuranceManagement.API.Models.Customer,System.Threading.CancellationToken)">
-            <inheritdoc />
+        <member name="M:InsuranceManagement.API.Services.DemoItemStore.GetById(System.Int32)">
+            <summary>Gets a demo item by ID.</summary>
         </member>
-        <member name="M:InsuranceManagement.API.Repositories.CustomerRepository.DeleteAsync(System.Int32,System.Threading.CancellationToken)">
-            <inheritdoc />
+        <member name="M:InsuranceManagement.API.Services.DemoItemStore.Create(System.String)">
+            <summary>Creates a demo item.</summary>
         </member>
-        <member name="T:InsuranceManagement.API.Repositories.ICustomerRepository">
-            <summary>Defines persistence operations for insurance customers.</summary>
+        <member name="T:InsuranceManagement.API.Services.JwtOptions">
+            <summary>Configuration required to issue and validate signed JWT access tokens.</summary>
         </member>
-        <member name="M:InsuranceManagement.API.Repositories.ICustomerRepository.GetAllAsync(System.Threading.CancellationToken)">
-            <summary>Gets all customers ordered by name and identifier.</summary>
-            <param name="cancellationToken">Token used to cancel the database operation.</param>
+        <member name="F:InsuranceManagement.API.Services.JwtOptions.SectionName">
+            <summary>Configuration section containing the JWT settings.</summary>
         </member>
-        <member name="M:InsuranceManagement.API.Repositories.ICustomerRepository.GetByIdAsync(System.Int32,System.Threading.CancellationToken)">
-            <summary>Gets a customer by its identifier.</summary>
-            <param name="id">The customer identifier.</param>
-            <param name="cancellationToken">Token used to cancel the database operation.</param>
+        <member name="P:InsuranceManagement.API.Services.JwtOptions.Issuer">
+            <summary>Expected issuer for access tokens.</summary>
         </member>
-        <member name="M:InsuranceManagement.API.Repositories.ICustomerRepository.AddAsync(InsuranceManagement.API.Models.Customer,System.Threading.CancellationToken)">
-            <summary>Adds a customer and persists it to the database.</summary>
-            <param name="customer">The customer to add.</param>
-            <param name="cancellationToken">Token used to cancel the database operation.</param>
+        <member name="P:InsuranceManagement.API.Services.JwtOptions.Audience">
+            <summary>Expected audience for access tokens.</summary>
         </member>
-        <member name="M:InsuranceManagement.API.Repositories.ICustomerRepository.UpdateAsync(InsuranceManagement.API.Models.Customer,System.Threading.CancellationToken)">
-            <summary>Replaces a customer's editable fields and persists the changes.</summary>
-            <param name="customer">The customer values to save, including its identifier.</param>
-            <param name="cancellationToken">Token used to cancel the database operation.</param>
-            <returns>The updated customer, or <see langword="null"/> if it does not exist.</returns>
+        <member name="P:InsuranceManagement.API.Services.JwtOptions.SigningKey">
+            <summary>Secret HMAC signing key, supplied via user secrets or environment.</summary>
         </member>
-        <member name="M:InsuranceManagement.API.Repositories.ICustomerRepository.DeleteAsync(System.Int32,System.Threading.CancellationToken)">
-            <summary>Deletes a customer by its identifier.</summary>
-            <param name="id">The customer identifier.</param>
-            <param name="cancellationToken">Token used to cancel the database operation.</param>
-            <returns><see langword="true"/> if the customer was deleted; otherwise, <see langword="false"/>.</returns>
+        <member name="P:InsuranceManagement.API.Services.JwtOptions.AccessTokenMinutes">
+            <summary>Access token lifetime in minutes.</summary>
+        </member>
+        <member name="T:InsuranceManagement.API.Services.TokenService">
+            <summary>Creates short-lived HMAC-signed JWT bearer tokens.</summary>
+        </member>
+        <member name="M:InsuranceManagement.API.Services.TokenService.#ctor(Microsoft.Extensions.Options.IOptions{InsuranceManagement.API.Services.JwtOptions})">
+            <summary>Creates short-lived HMAC-signed JWT bearer tokens.</summary>
         </member>
     </members>
 </doc>

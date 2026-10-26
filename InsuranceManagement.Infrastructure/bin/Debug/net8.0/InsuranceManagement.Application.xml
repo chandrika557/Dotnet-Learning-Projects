@@ -1,0 +1,641 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InsuranceManagement.Application</name>
+    </assembly>
+    <members>
+        <member name="T:InsuranceManagement.Application.CQRS.Commands.CreateCustomerCommand">
+            <summary>Write request for adding a customer.</summary>
+            <param name="Customer">Validated customer fields to create.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.CQRS.Commands.CreateCustomerCommand.#ctor(InsuranceManagement.Application.DTOs.CreateCustomerRequest)">
+            <summary>Write request for adding a customer.</summary>
+            <param name="Customer">Validated customer fields to create.</param>
+        </member>
+        <member name="P:InsuranceManagement.Application.CQRS.Commands.CreateCustomerCommand.Customer">
+            <summary>Validated customer fields to create.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.CQRS.Commands.DeleteCustomerCommand">
+            <summary>Write request for deleting a customer.</summary>
+            <param name="CustomerId">Identifier of the customer to delete.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.CQRS.Commands.DeleteCustomerCommand.#ctor(System.Int32)">
+            <summary>Write request for deleting a customer.</summary>
+            <param name="CustomerId">Identifier of the customer to delete.</param>
+        </member>
+        <member name="P:InsuranceManagement.Application.CQRS.Commands.DeleteCustomerCommand.CustomerId">
+            <summary>Identifier of the customer to delete.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.CQRS.Commands.UpdateCustomerCommand">
+            <summary>Write request for replacing a customer's details.</summary>
+            <param name="CustomerId">Identifier of the customer to update.</param>
+            <param name="Customer">Validated replacement fields.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.CQRS.Commands.UpdateCustomerCommand.#ctor(System.Int32,InsuranceManagement.Application.DTOs.UpdateCustomerRequest)">
+            <summary>Write request for replacing a customer's details.</summary>
+            <param name="CustomerId">Identifier of the customer to update.</param>
+            <param name="Customer">Validated replacement fields.</param>
+        </member>
+        <member name="P:InsuranceManagement.Application.CQRS.Commands.UpdateCustomerCommand.CustomerId">
+            <summary>Identifier of the customer to update.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.CQRS.Commands.UpdateCustomerCommand.Customer">
+            <summary>Validated replacement fields.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.CQRS.CustomerCommandService">
+            <summary>Implements customer write use cases and business rules.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.CQRS.CustomerCommandService.#ctor(InsuranceManagement.Application.Repositories.ICustomerRepository,AutoMapper.IMapper)">
+            <summary>Implements customer write use cases and business rules.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.CQRS.CustomerQueryService">
+            <summary>Implements customer read use cases.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.CQRS.CustomerQueryService.#ctor(InsuranceManagement.Application.Repositories.ICustomerRepository,AutoMapper.IMapper)">
+            <summary>Implements customer read use cases.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.CQRS.ICustomerCommandService">
+            <summary>Handles customer write commands.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.CQRS.ICustomerCommandService.CreateAsync(InsuranceManagement.Application.CQRS.Commands.CreateCustomerCommand,System.Threading.CancellationToken)">
+            <summary>Creates a customer and returns its response DTO.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.CQRS.ICustomerCommandService.UpdateAsync(InsuranceManagement.Application.CQRS.Commands.UpdateCustomerCommand,System.Threading.CancellationToken)">
+            <summary>Replaces customer details, or returns null if the ID does not exist.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.CQRS.ICustomerCommandService.DeleteAsync(InsuranceManagement.Application.CQRS.Commands.DeleteCustomerCommand,System.Threading.CancellationToken)">
+            <summary>Deletes a customer and reports whether a row was deleted.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.CQRS.ICustomerQueryService">
+            <summary>Handles read-only customer queries.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.CQRS.ICustomerQueryService.SearchAsync(InsuranceManagement.Application.CQRS.Queries.SearchCustomersQuery,System.Threading.CancellationToken)">
+            <summary>Searches customers and returns a page of results.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.CQRS.ICustomerQueryService.GetByIdAsync(InsuranceManagement.Application.CQRS.Queries.GetCustomerByIdQuery,System.Threading.CancellationToken)">
+            <summary>Gets one customer, or null if it does not exist.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.CQRS.Queries.GetCustomerByIdQuery">
+            <summary>Read request for one customer.</summary>
+            <param name="CustomerId">Identifier of the customer to retrieve.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.CQRS.Queries.GetCustomerByIdQuery.#ctor(System.Int32)">
+            <summary>Read request for one customer.</summary>
+            <param name="CustomerId">Identifier of the customer to retrieve.</param>
+        </member>
+        <member name="P:InsuranceManagement.Application.CQRS.Queries.GetCustomerByIdQuery.CustomerId">
+            <summary>Identifier of the customer to retrieve.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.CQRS.Queries.SearchCustomersQuery">
+            <summary>Read request for filtering and paging through customers.</summary>
+            <param name="Search">Optional name, email, or phone search term.</param>
+            <param name="PageNumber">One-based page number.</param>
+            <param name="PageSize">Number of records to return, up to 100.</param>
+            <param name="SortBy">Supported sort field: name or email.</param>
+            <param name="SortDescending">Whether to sort in descending order.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.CQRS.Queries.SearchCustomersQuery.#ctor(System.String,System.Int32,System.Int32,System.String,System.Boolean)">
+            <summary>Read request for filtering and paging through customers.</summary>
+            <param name="Search">Optional name, email, or phone search term.</param>
+            <param name="PageNumber">One-based page number.</param>
+            <param name="PageSize">Number of records to return, up to 100.</param>
+            <param name="SortBy">Supported sort field: name or email.</param>
+            <param name="SortDescending">Whether to sort in descending order.</param>
+        </member>
+        <member name="P:InsuranceManagement.Application.CQRS.Queries.SearchCustomersQuery.Search">
+            <summary>Optional name, email, or phone search term.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.CQRS.Queries.SearchCustomersQuery.PageNumber">
+            <summary>One-based page number.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.CQRS.Queries.SearchCustomersQuery.PageSize">
+            <summary>Number of records to return, up to 100.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.CQRS.Queries.SearchCustomersQuery.SortBy">
+            <summary>Supported sort field: name or email.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.CQRS.Queries.SearchCustomersQuery.SortDescending">
+            <summary>Whether to sort in descending order.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.DependencyInjection">
+            <summary>Registers application services, validators, mappings, and use cases.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.DependencyInjection.AddInsuranceApplication(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>Adds insurance application dependencies to the container.</summary>
+            <param name="services">Application service collection.</param>
+            <param name="configuration">Configuration used for AutoMapper licensing.</param>
+            <returns>The service collection for chaining.</returns>
+        </member>
+        <member name="T:InsuranceManagement.Application.DTOs.AuthResponse">
+            <summary>Access token and role information returned after authentication.</summary>
+            <param name="AccessToken">Signed bearer token that must be kept confidential by the client.</param>
+            <param name="ExpiresAt">UTC expiry instant for the access token.</param>
+            <param name="Role">Role assigned to the authenticated account.</param>
+            <param name="UserId">Identifier of the authenticated account.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.DTOs.AuthResponse.#ctor(System.String,System.DateTimeOffset,System.String,System.Int32)">
+            <summary>Access token and role information returned after authentication.</summary>
+            <param name="AccessToken">Signed bearer token that must be kept confidential by the client.</param>
+            <param name="ExpiresAt">UTC expiry instant for the access token.</param>
+            <param name="Role">Role assigned to the authenticated account.</param>
+            <param name="UserId">Identifier of the authenticated account.</param>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.AuthResponse.AccessToken">
+            <summary>Signed bearer token that must be kept confidential by the client.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.AuthResponse.ExpiresAt">
+            <summary>UTC expiry instant for the access token.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.AuthResponse.Role">
+            <summary>Role assigned to the authenticated account.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.AuthResponse.UserId">
+            <summary>Identifier of the authenticated account.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.DTOs.ClaimResponse">
+            <summary>Claim details returned by the insurance management API.</summary>
+            <param name="ClaimId">Claim identifier.</param>
+            <param name="PolicyId">Identifier of the associated policy.</param>
+            <param name="ClaimAmount">Amount requested by the claimant.</param>
+            <param name="ClaimDate">Submission timestamp with timezone offset.</param>
+            <param name="Reason">Explanation of the claimed loss or expense.</param>
+            <param name="Status">Current processing status.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.DTOs.ClaimResponse.#ctor(System.Int32,System.Int32,System.Decimal,System.DateTimeOffset,System.String,InsuranceManagement.Domain.Models.ClaimStatus)">
+            <summary>Claim details returned by the insurance management API.</summary>
+            <param name="ClaimId">Claim identifier.</param>
+            <param name="PolicyId">Identifier of the associated policy.</param>
+            <param name="ClaimAmount">Amount requested by the claimant.</param>
+            <param name="ClaimDate">Submission timestamp with timezone offset.</param>
+            <param name="Reason">Explanation of the claimed loss or expense.</param>
+            <param name="Status">Current processing status.</param>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.ClaimResponse.ClaimId">
+            <summary>Claim identifier.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.ClaimResponse.PolicyId">
+            <summary>Identifier of the associated policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.ClaimResponse.ClaimAmount">
+            <summary>Amount requested by the claimant.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.ClaimResponse.ClaimDate">
+            <summary>Submission timestamp with timezone offset.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.ClaimResponse.Reason">
+            <summary>Explanation of the claimed loss or expense.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.ClaimResponse.Status">
+            <summary>Current processing status.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.DTOs.CreateClaimRequest">
+            <summary>Request body for submitting a claim against a policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.CreateClaimRequest.PolicyId">
+            <summary>Policy identifier that the claim refers to.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.CreateClaimRequest.ClaimAmount">
+            <summary>Amount requested for the claim.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.CreateClaimRequest.Reason">
+            <summary>Reason describing the loss or expense.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.DTOs.CreateCustomerRequest">
+            <summary>Request body for creating an insurance customer.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.CreateCustomerRequest.Name">
+            <summary>Customer's full name.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.CreateCustomerRequest.Email">
+            <summary>Optional email address for the customer.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.CreateCustomerRequest.PhoneNumber">
+            <summary>Optional phone number for the customer.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.CreateCustomerRequest.Address">
+            <summary>Optional mailing address for the customer.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.DTOs.CreatePolicyRequest">
+            <summary>Request body for issuing a policy to a customer.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.CreatePolicyRequest.PolicyName">
+            <summary>Display name for the insurance policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.CreatePolicyRequest.PolicyType">
+            <summary>Insurance category for the policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.CreatePolicyRequest.CoverageAmount">
+            <summary>Maximum amount covered by the policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.CreatePolicyRequest.PremiumAmount">
+            <summary>Premium charged for the policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.CreatePolicyRequest.CustomerId">
+            <summary>Identifier of the customer who owns this policy.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.DTOs.CustomerResponse">
+            <summary>Customer details returned by the insurance management API.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.DTOs.CustomerResponse.#ctor(System.Int32,System.String,System.String,System.String,System.String)">
+            <summary>Customer details returned by the insurance management API.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.DTOs.LoginRequest">
+            <summary>Credentials used to obtain a JSON Web Token.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.LoginRequest.Email">
+            <summary>Registered email address.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.LoginRequest.Password">
+            <summary>Account password.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.DTOs.PagedResponse`1">
+            <summary>A page of results and the total number of matching records.</summary>
+            <typeparam name="T">Type of each result item.</typeparam>
+            <param name="Items">Records in this page.</param>
+            <param name="PageNumber">One-based current page number.</param>
+            <param name="PageSize">Maximum number of records requested per page.</param>
+            <param name="TotalCount">Total number of records matching the search filters.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.DTOs.PagedResponse`1.#ctor(System.Collections.Generic.IReadOnlyList{`0},System.Int32,System.Int32,System.Int32)">
+            <summary>A page of results and the total number of matching records.</summary>
+            <typeparam name="T">Type of each result item.</typeparam>
+            <param name="Items">Records in this page.</param>
+            <param name="PageNumber">One-based current page number.</param>
+            <param name="PageSize">Maximum number of records requested per page.</param>
+            <param name="TotalCount">Total number of records matching the search filters.</param>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.PagedResponse`1.Items">
+            <summary>Records in this page.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.PagedResponse`1.PageNumber">
+            <summary>One-based current page number.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.PagedResponse`1.PageSize">
+            <summary>Maximum number of records requested per page.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.PagedResponse`1.TotalCount">
+            <summary>Total number of records matching the search filters.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.DTOs.PolicyResponse">
+            <summary>Policy details returned by the insurance management API.</summary>
+            <param name="PolicyId">Policy identifier.</param>
+            <param name="PolicyName">Display name for the insurance policy.</param>
+            <param name="PolicyType">Insurance category.</param>
+            <param name="CoverageAmount">Maximum amount covered by the policy.</param>
+            <param name="PremiumAmount">Premium charged for the policy.</param>
+            <param name="CustomerId">Identifier of the owning customer.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.DTOs.PolicyResponse.#ctor(System.Int32,System.String,InsuranceManagement.Domain.Models.PolicyType,System.Decimal,System.Decimal,System.Int32)">
+            <summary>Policy details returned by the insurance management API.</summary>
+            <param name="PolicyId">Policy identifier.</param>
+            <param name="PolicyName">Display name for the insurance policy.</param>
+            <param name="PolicyType">Insurance category.</param>
+            <param name="CoverageAmount">Maximum amount covered by the policy.</param>
+            <param name="PremiumAmount">Premium charged for the policy.</param>
+            <param name="CustomerId">Identifier of the owning customer.</param>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.PolicyResponse.PolicyId">
+            <summary>Policy identifier.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.PolicyResponse.PolicyName">
+            <summary>Display name for the insurance policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.PolicyResponse.PolicyType">
+            <summary>Insurance category.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.PolicyResponse.CoverageAmount">
+            <summary>Maximum amount covered by the policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.PolicyResponse.PremiumAmount">
+            <summary>Premium charged for the policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.PolicyResponse.CustomerId">
+            <summary>Identifier of the owning customer.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.DTOs.RegisterRequest">
+            <summary>Credentials used to register a customer account.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.RegisterRequest.Email">
+            <summary>Email address used as the account name.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.RegisterRequest.Password">
+            <summary>Plaintext password sent over TLS; the server stores only a password hash.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.DTOs.UpdateClaimStatusRequest">
+            <summary>Request body for an adjuster to approve or reject a claim.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.UpdateClaimStatusRequest.Status">
+            <summary>New processing status for the claim.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.DTOs.UpdateCustomerRequest">
+            <summary>Request body for replacing an insurance customer's details.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.UpdateCustomerRequest.Name">
+            <summary>Customer's full name.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.UpdateCustomerRequest.Email">
+            <summary>Optional email address for the customer.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.UpdateCustomerRequest.PhoneNumber">
+            <summary>Optional phone number for the customer.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.UpdateCustomerRequest.Address">
+            <summary>Optional mailing address for the customer.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.DTOs.UpdatePolicyRequest">
+            <summary>Request body for replacing policy details.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.UpdatePolicyRequest.PolicyName">
+            <summary>Display name for the insurance policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.UpdatePolicyRequest.PolicyType">
+            <summary>Insurance category for the policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.UpdatePolicyRequest.CoverageAmount">
+            <summary>Maximum amount covered by the policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.UpdatePolicyRequest.PremiumAmount">
+            <summary>Premium charged for the policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.UpdatePolicyRequest.CustomerId">
+            <summary>Identifier of the customer who owns this policy.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.DTOs.UpdateUserRoleRequest">
+            <summary>Request body for an administrator to change a user's role.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.UpdateUserRoleRequest.Role">
+            <summary>One of Customer, ClaimsAdjuster, or Administrator.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.DTOs.UserProfileResponse">
+            <summary>Safe account details returned for the authenticated user.</summary>
+            <param name="UserId">Account identifier.</param>
+            <param name="Email">Registered email address.</param>
+            <param name="Role">Assigned application role.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.DTOs.UserProfileResponse.#ctor(System.Int32,System.String,System.String)">
+            <summary>Safe account details returned for the authenticated user.</summary>
+            <param name="UserId">Account identifier.</param>
+            <param name="Email">Registered email address.</param>
+            <param name="Role">Assigned application role.</param>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.UserProfileResponse.UserId">
+            <summary>Account identifier.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.UserProfileResponse.Email">
+            <summary>Registered email address.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.DTOs.UserProfileResponse.Role">
+            <summary>Assigned application role.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Repositories.IClaimRepository">
+            <summary>Defines persistence operations for insurance claims.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.IClaimRepository.GetAllAsync(System.Threading.CancellationToken)">
+            <summary>Gets all claims in submission-date order.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.IClaimRepository.GetByIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>Gets a claim by its identifier.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.IClaimRepository.AddAsync(InsuranceManagement.Domain.Models.Claim,System.Threading.CancellationToken)">
+            <summary>Adds a claim and persists it.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.IClaimRepository.UpdateStatusAsync(System.Int32,InsuranceManagement.Domain.Models.ClaimStatus,System.Threading.CancellationToken)">
+            <summary>Changes a claim's status and persists it.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Repositories.ICustomerRepository">
+            <summary>Defines persistence operations for insurance customers.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.ICustomerRepository.SearchAsync(System.String,System.Int32,System.Int32,System.String,System.Boolean,System.Threading.CancellationToken)">
+            <summary>Gets a filtered and ordered page of customers.</summary>
+            <param name="search">Optional search text matched against customer name, email, or phone.</param>
+            <param name="pageNumber">One-based page number.</param>
+            <param name="pageSize">Maximum records to return.</param>
+            <param name="sortBy">Supported sort field: name or email.</param>
+            <param name="sortDescending">Whether to sort in descending order.</param>
+            <param name="cancellationToken">Token used to cancel the database operation.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.ICustomerRepository.GetByIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>Gets a customer by its identifier.</summary>
+            <param name="id">The customer identifier.</param>
+            <param name="cancellationToken">Token used to cancel the database operation.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.ICustomerRepository.HasPoliciesAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>Checks whether a customer owns any policies.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.ICustomerRepository.AddAsync(InsuranceManagement.Domain.Models.Customer,System.Threading.CancellationToken)">
+            <summary>Adds a customer and persists it to the database.</summary>
+            <param name="customer">The customer to add.</param>
+            <param name="cancellationToken">Token used to cancel the database operation.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.ICustomerRepository.UpdateAsync(InsuranceManagement.Domain.Models.Customer,System.Threading.CancellationToken)">
+            <summary>Replaces a customer's editable fields and persists the changes.</summary>
+            <param name="customer">The customer values to save, including its identifier.</param>
+            <param name="cancellationToken">Token used to cancel the database operation.</param>
+            <returns>The updated customer, or <see langword="null"/> if it does not exist.</returns>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.ICustomerRepository.DeleteAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>Deletes a customer by its identifier.</summary>
+            <param name="id">The customer identifier.</param>
+            <param name="cancellationToken">Token used to cancel the database operation.</param>
+            <returns><see langword="true"/> if the customer was deleted; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="T:InsuranceManagement.Application.Repositories.IPolicyRepository">
+            <summary>Defines persistence operations for insurance policies.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.IPolicyRepository.GetAllAsync(System.Threading.CancellationToken)">
+            <summary>Gets all policies in name order.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.IPolicyRepository.GetByIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>Gets a policy by its identifier.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.IPolicyRepository.HasClaimsAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>Checks whether a policy has associated claims.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.IPolicyRepository.AddAsync(InsuranceManagement.Domain.Models.Policy,System.Threading.CancellationToken)">
+            <summary>Adds a policy and persists it.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.IPolicyRepository.UpdateAsync(InsuranceManagement.Domain.Models.Policy,System.Threading.CancellationToken)">
+            <summary>Updates a policy and returns null when it does not exist.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.IPolicyRepository.DeleteAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>Deletes a policy and returns whether it existed.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Repositories.IUserAccountRepository">
+            <summary>Defines persistence operations for registered API accounts.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.IUserAccountRepository.GetByEmailAsync(System.String,System.Threading.CancellationToken)">
+            <summary>Finds an account by its normalized email address.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.IUserAccountRepository.GetByIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>Finds an account by its identifier.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.IUserAccountRepository.AddAsync(InsuranceManagement.Domain.Models.UserAccount,System.Threading.CancellationToken)">
+            <summary>Adds an account and persists it.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Repositories.IUserAccountRepository.SaveChangesAsync(System.Threading.CancellationToken)">
+            <summary>Persists pending account changes.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Services.AuthService">
+            <summary>Implements registration, password verification, and account-role management.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.AuthService.#ctor(InsuranceManagement.Application.Repositories.IUserAccountRepository,Microsoft.AspNetCore.Identity.IPasswordHasher{InsuranceManagement.Domain.Models.UserAccount},InsuranceManagement.Application.Services.ITokenService)">
+            <summary>Implements registration, password verification, and account-role management.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Services.ClaimService">
+            <summary>Implements claim business rules and response mapping.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.ClaimService.#ctor(InsuranceManagement.Application.Repositories.IClaimRepository,InsuranceManagement.Application.Repositories.IPolicyRepository,AutoMapper.IMapper)">
+            <summary>Implements claim business rules and response mapping.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Services.ConflictException">
+            <summary>Indicates that an operation conflicts with existing domain data.</summary>
+            <param name="message">Safe, user-facing explanation of the conflict.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.ConflictException.#ctor(System.String)">
+            <summary>Indicates that an operation conflicts with existing domain data.</summary>
+            <param name="message">Safe, user-facing explanation of the conflict.</param>
+        </member>
+        <member name="T:InsuranceManagement.Application.Services.CustomerSearchOptions">
+            <summary>Filtering, ordering, and paging options for customer searches.</summary>
+            <param name="Search">Optional customer-name, email, or phone search text.</param>
+            <param name="PageNumber">One-based page number.</param>
+            <param name="PageSize">Number of records in a page, up to 100.</param>
+            <param name="SortBy">Supported field name or email.</param>
+            <param name="SortDescending">Whether to sort in descending order.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.CustomerSearchOptions.#ctor(System.String,System.Int32,System.Int32,System.String,System.Boolean)">
+            <summary>Filtering, ordering, and paging options for customer searches.</summary>
+            <param name="Search">Optional customer-name, email, or phone search text.</param>
+            <param name="PageNumber">One-based page number.</param>
+            <param name="PageSize">Number of records in a page, up to 100.</param>
+            <param name="SortBy">Supported field name or email.</param>
+            <param name="SortDescending">Whether to sort in descending order.</param>
+        </member>
+        <member name="P:InsuranceManagement.Application.Services.CustomerSearchOptions.Search">
+            <summary>Optional customer-name, email, or phone search text.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.Services.CustomerSearchOptions.PageNumber">
+            <summary>One-based page number.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.Services.CustomerSearchOptions.PageSize">
+            <summary>Number of records in a page, up to 100.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.Services.CustomerSearchOptions.SortBy">
+            <summary>Supported field name or email.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Application.Services.CustomerSearchOptions.SortDescending">
+            <summary>Whether to sort in descending order.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Services.IAuthService">
+            <summary>Defines account registration, login, and role-management use cases.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.IAuthService.RegisterAsync(InsuranceManagement.Application.DTOs.RegisterRequest,System.Threading.CancellationToken)">
+            <summary>Registers a customer account and issues its access token.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.IAuthService.LoginAsync(InsuranceManagement.Application.DTOs.LoginRequest,System.Threading.CancellationToken)">
+            <summary>Verifies credentials and issues a token, or returns null for invalid credentials.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.IAuthService.GetProfileAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>Gets safe profile details for an authenticated account.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.IAuthService.UpdateRoleAsync(System.Int32,System.String,System.Threading.CancellationToken)">
+            <summary>Changes an account role and returns false when the account does not exist.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Services.IClaimService">
+            <summary>Defines insurance claim use cases for the API.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.IClaimService.GetAllAsync(System.Threading.CancellationToken)">
+            <summary>Gets all claim response DTOs.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.IClaimService.GetByIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>Gets a claim response or null when the ID does not exist.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.IClaimService.CreateAsync(InsuranceManagement.Application.DTOs.CreateClaimRequest,System.Threading.CancellationToken)">
+            <summary>Submits a pending claim against an existing policy.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.IClaimService.UpdateStatusAsync(System.Int32,InsuranceManagement.Application.DTOs.UpdateClaimStatusRequest,System.Threading.CancellationToken)">
+            <summary>Reviews a pending claim, returning null when the ID does not exist.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Services.IPolicyService">
+            <summary>Defines policy use cases for the API.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.IPolicyService.GetAllAsync(System.Threading.CancellationToken)">
+            <summary>Gets all policy response DTOs.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.IPolicyService.GetByIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>Gets a policy response or null when the ID does not exist.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.IPolicyService.CreateAsync(InsuranceManagement.Application.DTOs.CreatePolicyRequest,System.Threading.CancellationToken)">
+            <summary>Creates a policy for an existing customer.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.IPolicyService.UpdateAsync(System.Int32,InsuranceManagement.Application.DTOs.UpdatePolicyRequest,System.Threading.CancellationToken)">
+            <summary>Replaces policy details or returns null when the ID does not exist.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.IPolicyService.DeleteAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>Deletes a policy and returns whether it existed.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Services.ITokenService">
+            <summary>Issues signed access tokens for authenticated accounts.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.ITokenService.CreateAccessToken(InsuranceManagement.Domain.Models.UserAccount)">
+            <summary>Creates a signed access token for an account.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Services.Mapping.InsuranceMappingProfile">
+            <summary>Defines mappings between persistence entities and API request/response types.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.Mapping.InsuranceMappingProfile.#ctor">
+            <summary>Registers supported domain-to-contract and request-to-domain maps.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Services.PolicyService">
+            <summary>Implements policy business rules and response mapping.</summary>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.PolicyService.#ctor(InsuranceManagement.Application.Repositories.IPolicyRepository,InsuranceManagement.Application.Repositories.ICustomerRepository,AutoMapper.IMapper)">
+            <summary>Implements policy business rules and response mapping.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Services.ResourceNotFoundException">
+            <summary>Indicates that a requested domain resource does not exist.</summary>
+            <param name="resource">Name of the missing resource.</param>
+            <param name="key">Identifier used to locate the resource.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.ResourceNotFoundException.#ctor(System.String,System.Object)">
+            <summary>Indicates that a requested domain resource does not exist.</summary>
+            <param name="resource">Name of the missing resource.</param>
+            <param name="key">Identifier used to locate the resource.</param>
+        </member>
+        <member name="T:InsuranceManagement.Application.Services.ValidationException">
+            <summary>Represents validation errors that are not tied to an individual request field.</summary>
+            <param name="message">Safe, user-facing validation explanation.</param>
+        </member>
+        <member name="M:InsuranceManagement.Application.Services.ValidationException.#ctor(System.String)">
+            <summary>Represents validation errors that are not tied to an individual request field.</summary>
+            <param name="message">Safe, user-facing validation explanation.</param>
+        </member>
+        <member name="T:InsuranceManagement.Application.Validators.CreateClaimRequestValidator">
+            <summary>Validates claim submission requests.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Validators.CreateCustomerRequestValidator">
+            <summary>Validates customer creation requests.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Validators.CreatePolicyRequestValidator">
+            <summary>Validates policy creation requests.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Validators.LoginRequestValidator">
+            <summary>Validates login requests.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Validators.RegisterRequestValidator">
+            <summary>Validates account registration requests.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Validators.UpdateClaimStatusRequestValidator">
+            <summary>Validates claim review requests.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Validators.UpdateCustomerRequestValidator">
+            <summary>Validates customer update requests.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Validators.UpdatePolicyRequestValidator">
+            <summary>Validates policy update requests.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Application.Validators.UpdateUserRoleRequestValidator">
+            <summary>Validates role assignment requests.</summary>
+        </member>
+    </members>
+</doc>

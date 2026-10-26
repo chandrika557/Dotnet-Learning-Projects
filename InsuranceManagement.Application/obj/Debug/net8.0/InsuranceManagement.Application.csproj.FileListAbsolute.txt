@@ -1,0 +1,23 @@
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\bin\Debug\net8.0\InsuranceManagement.Application.deps.json
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\bin\Debug\net8.0\InsuranceManagement.Application.dll
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\bin\Debug\net8.0\InsuranceManagement.Application.pdb
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\bin\Debug\net8.0\InsuranceManagement.Application.xml
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\bin\Debug\net8.0\InsuranceManagement.Domain.dll
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\bin\Debug\net8.0\InsuranceManagement.Domain.pdb
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\bin\Debug\net8.0\InsuranceManagement.Domain.xml
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\obj\Debug\net8.0\InsuranceManagement.Application.csproj.AssemblyReference.cache
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\obj\Debug\net8.0\InsuranceManagement.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\obj\Debug\net8.0\InsuranceManagement.Application.AssemblyInfoInputs.cache
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\obj\Debug\net8.0\InsuranceManagement.Application.AssemblyInfo.cs
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\obj\Debug\net8.0\InsuranceManagement.Application.csproj.CoreCompileInputs.cache
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\obj\Debug\net8.0\InsuranceManagement.Application.sourcelink.json
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\obj\Debug\net8.0\Insuranc.5179A92E.Up2Date
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\obj\Debug\net8.0\InsuranceManagement.Application.dll
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\obj\Debug\net8.0\refint\InsuranceManagement.Application.dll
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\obj\Debug\net8.0\InsuranceManagement.Application.xml
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\obj\Debug\net8.0\InsuranceManagement.Application.pdb
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Application\obj\Debug\net8.0\ref\InsuranceManagement.Application.dll
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InMemoryEndpointBuild\InsuranceManagement.Application.deps.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InMemoryEndpointBuild\InsuranceManagement.Application.dll
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InMemoryEndpointBuild\InsuranceManagement.Application.pdb
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InMemoryEndpointBuild\InsuranceManagement.Application.xml

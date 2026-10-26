@@ -1,0 +1,26 @@
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\bin\Debug\net8.0\InsuranceManagement.Infrastructure.deps.json
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\bin\Debug\net8.0\InsuranceManagement.Infrastructure.runtimeconfig.json
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\bin\Debug\net8.0\InsuranceManagement.Infrastructure.dll
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\bin\Debug\net8.0\InsuranceManagement.Infrastructure.pdb
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\bin\Debug\net8.0\InsuranceManagement.Application.dll
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\bin\Debug\net8.0\InsuranceManagement.Domain.dll
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\bin\Debug\net8.0\InsuranceManagement.Application.pdb
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\bin\Debug\net8.0\InsuranceManagement.Application.xml
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\bin\Debug\net8.0\InsuranceManagement.Domain.pdb
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\bin\Debug\net8.0\InsuranceManagement.Domain.xml
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\obj\Debug\net8.0\InsuranceManagement.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\obj\Debug\net8.0\InsuranceManagement.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\obj\Debug\net8.0\InsuranceManagement.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\obj\Debug\net8.0\InsuranceManagement.Infrastructure.AssemblyInfo.cs
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\obj\Debug\net8.0\InsuranceManagement.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\obj\Debug\net8.0\InsuranceManagement.Infrastructure.sourcelink.json
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\obj\Debug\net8.0\Insuranc.1289B01A.Up2Date
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\obj\Debug\net8.0\InsuranceManagement.Infrastructure.dll
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\obj\Debug\net8.0\refint\InsuranceManagement.Infrastructure.dll
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\obj\Debug\net8.0\InsuranceManagement.Infrastructure.pdb
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\obj\Debug\net8.0\InsuranceManagement.Infrastructure.genruntimeconfig.cache
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Infrastructure\obj\Debug\net8.0\ref\InsuranceManagement.Infrastructure.dll
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InMemoryEndpointBuild\InsuranceManagement.Infrastructure.deps.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InMemoryEndpointBuild\InsuranceManagement.Infrastructure.runtimeconfig.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InMemoryEndpointBuild\InsuranceManagement.Infrastructure.dll
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InMemoryEndpointBuild\InsuranceManagement.Infrastructure.pdb

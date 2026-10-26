@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 namespace InsuranceManagement.API.Endpoints;
 
 /// <summary>Runs FluentValidation for endpoint request bodies and returns validation Problem Details.</summary>
-public sealed class ValidationFilter<TRequest>(IValidator<TRequest> validator) : IEndpointFilter
+internal sealed class ValidationFilter<TRequest>(IValidator<TRequest> validator) : IEndpointFilter
     where TRequest : class
 {
     public async ValueTask<object?> InvokeAsync(

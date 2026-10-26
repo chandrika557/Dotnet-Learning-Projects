@@ -1,19 +1,68 @@
-@InsuranceManagement.API_HostAddress = http://localhost:5209
+@baseUrl = http://localhost:5209
+@administratorToken = replace-with-bootstrap-administrator-jwt
+@adjusterToken = replace-with-claims-adjuster-jwt
 
-### Get all customers
-GET {{InsuranceManagement.API_HostAddress}}/api/customers
+### Get all in-memory demo items
+GET {{baseUrl}}/api/demo/items
 Accept: application/json
 
-### Get an existing customer
-GET {{InsuranceManagement.API_HostAddress}}/api/customers/1
+### Create an in-memory demo item
+POST {{baseUrl}}/api/demo/items
+Content-Type: application/json
+
+{
+  "name": "Sample item"
+}
+
+### Get an in-memory demo item by ID
+GET {{baseUrl}}/api/demo/items/1
 Accept: application/json
 
-### Get a customer that does not exist
-GET {{InsuranceManagement.API_HostAddress}}/api/customers/999999
+### Register a customer account (the role is always Customer)
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "customer@example.com",
+  "password": "Strong-Password-91!"
+}
+
+### Login as the bootstrapped administrator
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "replace-with-bootstrap-administrator-password"
+}
+
+### Get the authenticated administrator profile
+GET {{baseUrl}}/api/auth/me
+Authorization: Bearer {{administratorToken}}
+Accept: application/json
+
+### Assign the adjuster role (administrator only)
+PUT {{baseUrl}}/api/auth/users/1/role
+Authorization: Bearer {{administratorToken}}
+Content-Type: application/json
+
+{
+  "role": "ClaimsAdjuster"
+}
+
+### Search customers (adjuster or administrator)
+GET {{baseUrl}}/api/customers?search=ava&pageNumber=1&pageSize=20&sortBy=name&sortDescending=false
+Authorization: Bearer {{adjusterToken}}
+Accept: application/json
+
+### Get a customer
+GET {{baseUrl}}/api/customers/1
+Authorization: Bearer {{adjusterToken}}
 Accept: application/json
 
 ### Create a customer
-POST {{InsuranceManagement.API_HostAddress}}/api/customers
+POST {{baseUrl}}/api/customers
+Authorization: Bearer {{adjusterToken}}
 Content-Type: application/json
 
 {
@@ -23,8 +72,9 @@ Content-Type: application/json
   "address": "100 Market Street"
 }
 
-### Create a customer with invalid data (expected 400)
-POST {{InsuranceManagement.API_HostAddress}}/api/customers
+### Invalid customer input (expected 400)
+POST {{baseUrl}}/api/customers
+Authorization: Bearer {{adjusterToken}}
 Content-Type: application/json
 
 {
@@ -33,7 +83,8 @@ Content-Type: application/json
 }
 
 ### Replace a customer's details
-PUT {{InsuranceManagement.API_HostAddress}}/api/customers/1
+PUT {{baseUrl}}/api/customers/1
+Authorization: Bearer {{adjusterToken}}
 Content-Type: application/json
 
 {
@@ -43,5 +94,76 @@ Content-Type: application/json
   "address": "200 Market Street"
 }
 
-### Delete a customer
-DELETE {{InsuranceManagement.API_HostAddress}}/api/customers/1
+### Delete a customer with no policies
+DELETE {{baseUrl}}/api/customers/1
+Authorization: Bearer {{administratorToken}}
+
+### Issue a policy for an existing customer
+POST {{baseUrl}}/api/policies
+Authorization: Bearer {{adjusterToken}}
+Content-Type: application/json
+
+{
+  "policyName": "Ava Health Plus",
+  "policyType": "Health",
+  "coverageAmount": 250000,
+  "premiumAmount": 1200,
+  "customerId": 1
+}
+
+### List policies
+GET {{baseUrl}}/api/policies
+Authorization: Bearer {{adjusterToken}}
+Accept: application/json
+
+### Get a policy
+GET {{baseUrl}}/api/policies/1
+Authorization: Bearer {{adjusterToken}}
+Accept: application/json
+
+### Replace a policy
+PUT {{baseUrl}}/api/policies/1
+Authorization: Bearer {{adjusterToken}}
+Content-Type: application/json
+
+{
+  "policyName": "Ava Health Plus Updated",
+  "policyType": "Health",
+  "coverageAmount": 300000,
+  "premiumAmount": 1400,
+  "customerId": 1
+}
+
+### Delete a policy that has no claims
+DELETE {{baseUrl}}/api/policies/2
+Authorization: Bearer {{adjusterToken}}
+
+### Submit a claim (starts as Pending)
+POST {{baseUrl}}/api/claims
+Authorization: Bearer {{adjusterToken}}
+Content-Type: application/json
+
+{
+  "policyId": 1,
+  "claimAmount": 2500,
+  "reason": "Emergency treatment following an accident"
+}
+
+### List claims
+GET {{baseUrl}}/api/claims
+Authorization: Bearer {{adjusterToken}}
+Accept: application/json
+
+### Get a claim
+GET {{baseUrl}}/api/claims/1
+Authorization: Bearer {{adjusterToken}}
+Accept: application/json
+
+### Approve a pending claim (adjuster or administrator)
+PUT {{baseUrl}}/api/claims/1/status
+Authorization: Bearer {{adjusterToken}}
+Content-Type: application/json
+
+{
+  "status": "Approved"
+}

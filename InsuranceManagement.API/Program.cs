@@ -1,17 +1,15 @@
 using System.Text;
 using System.Text.Json.Serialization;
-using FluentValidation;
-using InsuranceManagement.API.Data;
 using InsuranceManagement.API.Endpoints;
 using InsuranceManagement.API.Middleware;
-using InsuranceManagement.API.Models;
-using InsuranceManagement.API.Repositories;
+using InsuranceManagement.Domain.Models;
+using InsuranceManagement.Application.Repositories;
+using InsuranceManagement.Application.Services;
 using InsuranceManagement.API.Services;
-using InsuranceManagement.API.Services.Mapping;
-using InsuranceManagement.API.Validators;
+using InsuranceManagement.Application;
+using InsuranceManagement.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 
@@ -26,24 +24,11 @@ builder.Host.UseSerilog((context, services, configuration) => configuration
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? throw new InvalidOperationException("The 'DefaultConnection' connection string is not configured.");
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
-
-builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
-builder.Services.AddScoped<IPolicyRepository, PolicyRepository>();
-builder.Services.AddScoped<IClaimRepository, ClaimRepository>();
-builder.Services.AddScoped<IUserAccountRepository, UserAccountRepository>();
-builder.Services.AddScoped<ICustomerService, CustomerService>();
-builder.Services.AddScoped<IPolicyService, PolicyService>();
-builder.Services.AddScoped<IClaimService, ClaimService>();
-builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddInsuranceApplication(builder.Configuration);
+builder.Services.AddInsuranceInfrastructure(connectionString);
 builder.Services.AddScoped<ITokenService, TokenService>();
-builder.Services.AddScoped<IPasswordHasher<UserAccount>, PasswordHasher<UserAccount>>();
-builder.Services.AddAutoMapper(
-    configuration => configuration.LicenseKey = builder.Configuration["AutoMapper:LicenseKey"],
-    typeof(InsuranceMappingProfile).Assembly);
-builder.Services.AddValidatorsFromAssemblyContaining<CreateCustomerRequestValidator>();
 builder.Services.AddScoped(typeof(ValidationFilter<>));
+builder.Services.AddSingleton<DemoItemStore>();
 
 builder.Services.AddOptions<JwtOptions>()
     .BindConfiguration(JwtOptions.SectionName)
@@ -99,26 +84,17 @@ builder.Services.AddSwaggerGen(options =>
         In = Microsoft.OpenApi.Models.ParameterLocation.Header,
         Description = "Enter a JWT access token."
     });
-    options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
-    {
-        {
-            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-            {
-                Reference = new Microsoft.OpenApi.Models.OpenApiReference
-                {
-                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            Array.Empty<string>()
-        }
-    });
-    options.IncludeXmlComments(Path.Combine(
-        AppContext.BaseDirectory,
-        $"{typeof(Program).Assembly.GetName().Name}.xml"));
+    options.OperationFilter<AuthorizeOperationFilter>();
+
+    var baseDirectory = AppContext.BaseDirectory;
+    options.IncludeXmlComments(Path.Combine(baseDirectory, "InsuranceManagement.API.xml"));
+    options.IncludeXmlComments(Path.Combine(baseDirectory, "InsuranceManagement.Application.xml"));
+    options.IncludeXmlComments(Path.Combine(baseDirectory, "InsuranceManagement.Domain.xml"));
 });
 
 var app = builder.Build();
+
+await AdministratorBootstrapper.CreateIfConfiguredAsync(app.Services, app.Configuration);
 
 app.UseSerilogRequestLogging();
 app.UseExceptionHandler();
@@ -137,5 +113,6 @@ app.MapCustomers();
 app.MapPolicies();
 app.MapClaims();
 app.MapAuth();
+app.MapDemoItemEndpoints();
 
 app.Run();

@@ -20,7 +20,7 @@ public class ClaimController : Controller
     public async Task<IActionResult> Index(CancellationToken cancellationToken) //method to retrieve all claims and display them in the view
     {
         var claims = await _claimService.GetAllAsync(cancellationToken);
-        var viewModel = claims.Select(claim => new ClaimListItemViewModel
+        var viewModel = claims.Select(claim => new ClaimListItemViewModel //map each claim to a ClaimListItemViewModel instance
         {
             ClaimId = claim.ClaimId,
             PolicyId = claim.PolicyId,

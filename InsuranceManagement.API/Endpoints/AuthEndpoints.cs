@@ -1,7 +1,9 @@
-using InsuranceManagement.API.DTOs;
-using InsuranceManagement.API.Models;
+using InsuranceManagement.Application.DTOs;
+using InsuranceManagement.Application.Services;
+using InsuranceManagement.Domain.Models;
 using InsuranceManagement.API.Services;
 using Microsoft.AspNetCore.Http.HttpResults;
+using System.Security.Claims;
 
 namespace InsuranceManagement.API.Endpoints;
 
@@ -19,9 +21,10 @@ public static class AuthEndpoints
             CancellationToken cancellationToken) =>
         {
             var result = await service.RegisterAsync(request, cancellationToken);
-            return TypedResults.Created("/api/auth/login", result);
+            return TypedResults.Created("/api/auth/me", result);
         })
         .AddEndpointFilter<ValidationFilter<RegisterRequest>>()
+        .AllowAnonymous()
         .WithName("Register")
         .WithSummary("Register a customer account")
         .WithDescription("Creates an account with the Customer role. This endpoint never accepts a role from the caller.")
@@ -40,12 +43,36 @@ public static class AuthEndpoints
                 : TypedResults.Ok(result);
         })
         .AddEndpointFilter<ValidationFilter<LoginRequest>>()
+        .AllowAnonymous()
         .WithName("Login")
         .WithSummary("Exchange credentials for a JWT")
         .WithDescription("Returns a short-lived signed bearer token. Invalid credentials receive a generic 401 response.")
         .Produces<AuthResponse>(StatusCodes.Status200OK)
         .Produces(StatusCodes.Status401Unauthorized)
         .ProducesValidationProblem();
+
+        auth.MapGet("/me", async Task<Results<Ok<UserProfileResponse>, NotFound, UnauthorizedHttpResult>> (
+            ClaimsPrincipal principal,
+            IAuthService service,
+            CancellationToken cancellationToken) =>
+        {
+            var idValue = principal.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(idValue, out var userId))
+            {
+                return TypedResults.Unauthorized();
+            }
+
+            var profile = await service.GetProfileAsync(userId, cancellationToken);
+            return profile is null
+                ? TypedResults.NotFound()
+                : TypedResults.Ok(profile);
+        })
+        .RequireAuthorization()
+        .WithName("GetCurrentUser")
+        .WithSummary("Get the authenticated account profile")
+        .WithDescription("Returns the caller's account ID, email, and role without exposing password data.")
+        .Produces<UserProfileResponse>(StatusCodes.Status200OK)
+        .Produces(StatusCodes.Status404NotFound);
 
         auth.MapPut("/users/{id:int}/role", async Task<Results<NoContent, NotFound>> (
             int id,

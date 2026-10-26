@@ -1,5 +1,6 @@
-using InsuranceManagement.API.DTOs;
-using InsuranceManagement.API.Models;
+using InsuranceManagement.Application.DTOs;
+using InsuranceManagement.Application.Services;
+using InsuranceManagement.Domain.Models;
 using InsuranceManagement.API.Services;
 using Microsoft.AspNetCore.Http.HttpResults;
 

@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InsuranceManagement.API</name>
+    </assembly>
+    <members>
+        <member name="T:InsuranceManagement.API.DTOs.CreateDemoItemRequest">
+            <summary>Request body for adding an item to the in-memory demo collection.</summary>
+        </member>
+        <member name="P:InsuranceManagement.API.DTOs.CreateDemoItemRequest.Name">
+            <summary>Gets the item name.</summary>
+        </member>
+        <member name="T:InsuranceManagement.API.DTOs.DemoItemResponse">
+            <summary>Represents an item in the in-memory demo collection.</summary>
+        </member>
+        <member name="M:InsuranceManagement.API.DTOs.DemoItemResponse.#ctor(System.Int32,System.String,System.DateTimeOffset)">
+            <summary>Represents an item in the in-memory demo collection.</summary>
+        </member>
+        <member name="T:InsuranceManagement.API.Endpoints.AuthEndpoints">
+            <summary>Maps public account and administrator role-management endpoints.</summary>
+        </member>
+        <member name="M:InsuranceManagement.API.Endpoints.AuthEndpoints.MapAuth(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)">
+            <summary>Maps registration, login, and role-management routes.</summary>
+        </member>
+        <member name="T:InsuranceManagement.API.Endpoints.AuthorizeOperationFilter">
+            <summary>Documents bearer authentication only on endpoints that require authorization.</summary>
+        </member>
+        <member name="T:InsuranceManagement.API.Endpoints.ClaimEndpoints">
+            <summary>Maps HTTP endpoints for insurance claims.</summary>
+        </member>
+        <member name="M:InsuranceManagement.API.Endpoints.ClaimEndpoints.MapClaims(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)">
+            <summary>Maps claim routes onto the application.</summary>
+        </member>
+        <member name="T:InsuranceManagement.API.Endpoints.CustomerEndpoints">
+            <summary>Maps HTTP endpoints for customer management.</summary>
+        </member>
+        <member name="M:InsuranceManagement.API.Endpoints.CustomerEndpoints.MapCustomers(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)">
+            <summary>Maps the customer CRUD routes onto the application.</summary>
+        </member>
+        <member name="T:InsuranceManagement.API.Endpoints.DemoItemEndpoints">
+            <summary>Maps the beginner-friendly in-memory demo item routes.</summary>
+        </member>
+        <member name="M:InsuranceManagement.API.Endpoints.DemoItemEndpoints.MapDemoItemEndpoints(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)">
+            <summary>Maps read and create routes for demo items.</summary>
+        </member>
+        <member name="T:InsuranceManagement.API.Endpoints.PolicyEndpoints">
+            <summary>Maps HTTP endpoints for insurance policies.</summary>
+        </member>
+        <member name="M:InsuranceManagement.API.Endpoints.PolicyEndpoints.MapPolicies(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)">
+            <summary>Maps policy routes onto the application.</summary>
+        </member>
+        <member name="T:InsuranceManagement.API.Endpoints.ValidationFilter`1">
+            <summary>Runs FluentValidation for endpoint request bodies and returns validation Problem Details.</summary>
+        </member>
+        <member name="M:InsuranceManagement.API.Endpoints.ValidationFilter`1.#ctor(FluentValidation.IValidator{`0})">
+            <summary>Runs FluentValidation for endpoint request bodies and returns validation Problem Details.</summary>
+        </member>
+        <member name="T:InsuranceManagement.API.Middleware.ApiExceptionHandler">
+            <summary>Maps expected application exceptions to safe Problem Details responses.</summary>
+        </member>
+        <member name="M:InsuranceManagement.API.Middleware.ApiExceptionHandler.#ctor(Microsoft.Extensions.Logging.ILogger{InsuranceManagement.API.Middleware.ApiExceptionHandler})">
+            <summary>Maps expected application exceptions to safe Problem Details responses.</summary>
+        </member>
+        <member name="T:InsuranceManagement.API.Services.AdministratorBootstrapper">
+            <summary>Creates the initial administrator only when explicit bootstrap credentials are configured.</summary>
+        </member>
+        <member name="T:InsuranceManagement.API.Services.DemoItemStore">
+            <summary>Stores demo items in memory for the lifetime of the API process.</summary>
+        </member>
+        <member name="M:InsuranceManagement.API.Services.DemoItemStore.GetAll">
+            <summary>Gets all demo items ordered by ID.</summary>
+        </member>
+        <member name="M:InsuranceManagement.API.Services.DemoItemStore.GetById(System.Int32)">
+            <summary>Gets a demo item by ID.</summary>
+        </member>
+        <member name="M:InsuranceManagement.API.Services.DemoItemStore.Create(System.String)">
+            <summary>Creates a demo item.</summary>
+        </member>
+        <member name="T:InsuranceManagement.API.Services.JwtOptions">
+            <summary>Configuration required to issue and validate signed JWT access tokens.</summary>
+        </member>
+        <member name="F:InsuranceManagement.API.Services.JwtOptions.SectionName">
+            <summary>Configuration section containing the JWT settings.</summary>
+        </member>
+        <member name="P:InsuranceManagement.API.Services.JwtOptions.Issuer">
+            <summary>Expected issuer for access tokens.</summary>
+        </member>
+        <member name="P:InsuranceManagement.API.Services.JwtOptions.Audience">
+            <summary>Expected audience for access tokens.</summary>
+        </member>
+        <member name="P:InsuranceManagement.API.Services.JwtOptions.SigningKey">
+            <summary>Secret HMAC signing key, supplied via user secrets or environment.</summary>
+        </member>
+        <member name="P:InsuranceManagement.API.Services.JwtOptions.AccessTokenMinutes">
+            <summary>Access token lifetime in minutes.</summary>
+        </member>
+        <member name="T:InsuranceManagement.API.Services.TokenService">
+            <summary>Creates short-lived HMAC-signed JWT bearer tokens.</summary>
+        </member>
+        <member name="M:InsuranceManagement.API.Services.TokenService.#ctor(Microsoft.Extensions.Options.IOptions{InsuranceManagement.API.Services.JwtOptions})">
+            <summary>Creates short-lived HMAC-signed JWT bearer tokens.</summary>
+        </member>
+    </members>
+</doc>

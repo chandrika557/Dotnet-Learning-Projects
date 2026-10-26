@@ -1,0 +1,18 @@
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Domain\bin\Debug\net8.0\InsuranceManagement.Domain.deps.json
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Domain\bin\Debug\net8.0\InsuranceManagement.Domain.dll
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Domain\bin\Debug\net8.0\InsuranceManagement.Domain.pdb
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Domain\bin\Debug\net8.0\InsuranceManagement.Domain.xml
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Domain\obj\Debug\net8.0\InsuranceManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Domain\obj\Debug\net8.0\InsuranceManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Domain\obj\Debug\net8.0\InsuranceManagement.Domain.AssemblyInfo.cs
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Domain\obj\Debug\net8.0\InsuranceManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Domain\obj\Debug\net8.0\InsuranceManagement.Domain.sourcelink.json
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Domain\obj\Debug\net8.0\InsuranceManagement.Domain.dll
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Domain\obj\Debug\net8.0\refint\InsuranceManagement.Domain.dll
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Domain\obj\Debug\net8.0\InsuranceManagement.Domain.xml
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Domain\obj\Debug\net8.0\InsuranceManagement.Domain.pdb
+C:\Users\JayaChandrikaEdiga\Downloads\.Net Project Practice\InsuranceManagement.Domain\obj\Debug\net8.0\ref\InsuranceManagement.Domain.dll
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InMemoryEndpointBuild\InsuranceManagement.Domain.deps.json
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InMemoryEndpointBuild\InsuranceManagement.Domain.dll
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InMemoryEndpointBuild\InsuranceManagement.Domain.pdb
+C:\Users\JayaChandrikaEdiga\AppData\Local\Temp\InMemoryEndpointBuild\InsuranceManagement.Domain.xml

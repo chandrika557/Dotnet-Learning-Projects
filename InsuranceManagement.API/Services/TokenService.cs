@@ -1,15 +1,16 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using InsuranceManagement.API.DTOs;
-using InsuranceManagement.API.Models;
+using InsuranceManagement.Application.DTOs;
+using InsuranceManagement.Application.Services;
+using InsuranceManagement.Domain.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace InsuranceManagement.API.Services;
 
 /// <summary>Creates short-lived HMAC-signed JWT bearer tokens.</summary>
-public sealed class TokenService(IOptions<JwtOptions> options) : ITokenService
+internal sealed class TokenService(IOptions<JwtOptions> options) : ITokenService
 {
     private readonly JwtOptions _options = options.Value;
 
@@ -39,6 +40,7 @@ public sealed class TokenService(IOptions<JwtOptions> options) : ITokenService
         return new AuthResponse(
             new JwtSecurityTokenHandler().WriteToken(token),
             expiresAt,
-            userAccount.Role);
+            userAccount.Role,
+            userAccount.UserAccountId);
     }
 }

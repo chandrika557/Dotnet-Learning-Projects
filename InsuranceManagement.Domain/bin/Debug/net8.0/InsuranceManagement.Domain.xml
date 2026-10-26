@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InsuranceManagement.Domain</name>
+    </assembly>
+    <members>
+        <member name="T:InsuranceManagement.Domain.Models.Claim">
+            <summary>A claim submitted against an insurance policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Claim.ClaimId">
+            <summary>Database-generated claim identifier.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Claim.PolicyId">
+            <summary>Identifier of the policy associated with the claim.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Claim.Policy">
+            <summary>Policy associated with the claim.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Claim.ClaimAmount">
+            <summary>Amount requested by the claimant.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Claim.ClaimDate">
+            <summary>Timestamp when the claim was submitted.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Claim.Reason">
+            <summary>Explanation of the claimed loss or expense.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Claim.Status">
+            <summary>Current processing state of the claim.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Domain.Models.ClaimStatus">
+            <summary>Processing state of an insurance claim.</summary>
+        </member>
+        <member name="F:InsuranceManagement.Domain.Models.ClaimStatus.Pending">
+            <summary>Submitted and awaiting review.</summary>
+        </member>
+        <member name="F:InsuranceManagement.Domain.Models.ClaimStatus.Approved">
+            <summary>Approved by a claims adjuster.</summary>
+        </member>
+        <member name="F:InsuranceManagement.Domain.Models.ClaimStatus.Rejected">
+            <summary>Rejected by a claims adjuster.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Domain.Models.Customer">
+            <summary>Represents a customer stored in the insurance database.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Customer.Id">
+            <summary>Gets or sets the database-generated customer identifier.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Customer.Name">
+            <summary>Gets or sets the customer's full name.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Customer.Email">
+            <summary>Gets or sets the customer's optional email address.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Customer.PhoneNumber">
+            <summary>Gets or sets the customer's optional phone number.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Customer.Address">
+            <summary>Gets or sets the customer's optional mailing address.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Customer.Policies">
+            <summary>Gets or sets the insurance policies owned by this customer.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Domain.Models.Policy">
+            <summary>Insurance coverage owned by a customer.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Policy.PolicyId">
+            <summary>Database-generated policy identifier.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Policy.PolicyName">
+            <summary>Display name of the coverage.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Policy.PolicyType">
+            <summary>Insurance category covered by the policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Policy.CoverageAmount">
+            <summary>Maximum amount covered by the policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Policy.PremiumAmount">
+            <summary>Premium charged for the policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Policy.CustomerId">
+            <summary>Identifier of the customer who owns the policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Policy.Customer">
+            <summary>Customer who owns the policy.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.Policy.Claims">
+            <summary>Claims filed against this policy.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Domain.Models.PolicyType">
+            <summary>Categories of insurance policies offered to customers.</summary>
+        </member>
+        <member name="F:InsuranceManagement.Domain.Models.PolicyType.Health">
+            <summary>Health insurance coverage.</summary>
+        </member>
+        <member name="F:InsuranceManagement.Domain.Models.PolicyType.Vehicle">
+            <summary>Vehicle insurance coverage.</summary>
+        </member>
+        <member name="F:InsuranceManagement.Domain.Models.PolicyType.Home">
+            <summary>Home insurance coverage.</summary>
+        </member>
+        <member name="F:InsuranceManagement.Domain.Models.PolicyType.Travel">
+            <summary>Travel insurance coverage.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Domain.Models.UserAccount">
+            <summary>A registered API user with a securely hashed password and assigned role.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.UserAccount.UserAccountId">
+            <summary>Database-generated account identifier.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.UserAccount.Email">
+            <summary>Unique email address used for login.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.UserAccount.PasswordHash">
+            <summary>One-way password hash; plaintext passwords are never stored.</summary>
+        </member>
+        <member name="P:InsuranceManagement.Domain.Models.UserAccount.Role">
+            <summary>Authorization role assigned to the account.</summary>
+        </member>
+        <member name="T:InsuranceManagement.Domain.Models.UserRoles">
+            <summary>Supported application roles used by authorization policies.</summary>
+        </member>
+        <member name="F:InsuranceManagement.Domain.Models.UserRoles.Customer">
+            <summary>Regular account role assigned during public registration.</summary>
+        </member>
+        <member name="F:InsuranceManagement.Domain.Models.UserRoles.ClaimsAdjuster">
+            <summary>May manage insurance customers, policies, and claims.</summary>
+        </member>
+        <member name="F:InsuranceManagement.Domain.Models.UserRoles.Administrator">
+            <summary>May perform all operations, including role provisioning.</summary>
+        </member>
+    </members>
+</doc>

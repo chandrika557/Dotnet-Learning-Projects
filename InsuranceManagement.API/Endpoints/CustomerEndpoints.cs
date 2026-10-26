@@ -1,5 +1,9 @@
-using InsuranceManagement.API.DTOs;
-using InsuranceManagement.API.Models;
+using InsuranceManagement.Application.DTOs;
+using InsuranceManagement.Application.CQRS;
+using InsuranceManagement.Application.CQRS.Commands;
+using InsuranceManagement.Application.CQRS.Queries;
+using InsuranceManagement.Application.Services;
+using InsuranceManagement.Domain.Models;
 using InsuranceManagement.API.Services;
 using Microsoft.AspNetCore.Http.HttpResults;
 
@@ -18,7 +22,7 @@ public static class CustomerEndpoints
 
         customers.MapGet("/", async Task<Ok<PagedResponse<CustomerResponse>>> (
             string? search,
-            ICustomerService customerService,
+            ICustomerQueryService customerService,
             CancellationToken cancellationToken,
             int pageNumber = 1,
             int pageSize = 20,
@@ -26,7 +30,7 @@ public static class CustomerEndpoints
             bool sortDescending = false) =>
         {
             var response = await customerService.SearchAsync(
-                new CustomerSearchOptions(search, pageNumber, pageSize, sortBy, sortDescending),
+                new SearchCustomersQuery(search, pageNumber, pageSize, sortBy, sortDescending),
                 cancellationToken);
             return TypedResults.Ok(response);
         })
@@ -38,10 +42,12 @@ public static class CustomerEndpoints
 
         customers.MapGet("/{id:int}", async Task<Results<Ok<CustomerResponse>, NotFound>> (
             int id,
-            ICustomerService customerService,
+            ICustomerQueryService customerService,
             CancellationToken cancellationToken) =>
         {
-            var customer = await customerService.GetByIdAsync(id, cancellationToken);
+            var customer = await customerService.GetByIdAsync(
+                new GetCustomerByIdQuery(id),
+                cancellationToken);
             return customer is null
                 ? TypedResults.NotFound()
                 : TypedResults.Ok(customer);
@@ -54,10 +60,12 @@ public static class CustomerEndpoints
 
         customers.MapPost("/", async Task<Created<CustomerResponse>> (
             CreateCustomerRequest request,
-            ICustomerService customerService,
+            ICustomerCommandService customerService,
             CancellationToken cancellationToken) =>
         {
-            var customer = await customerService.CreateAsync(request, cancellationToken);
+            var customer = await customerService.CreateAsync(
+                new CreateCustomerCommand(request),
+                cancellationToken);
             return TypedResults.Created($"/api/customers/{customer.Id}", customer);
         })
         .AddEndpointFilter<ValidationFilter<CreateCustomerRequest>>()
@@ -70,10 +78,12 @@ public static class CustomerEndpoints
         customers.MapPut("/{id:int}", async Task<Results<Ok<CustomerResponse>, NotFound>> (
             int id,
             UpdateCustomerRequest request,
-            ICustomerService customerService,
+            ICustomerCommandService customerService,
             CancellationToken cancellationToken) =>
         {
-            var customer = await customerService.UpdateAsync(id, request, cancellationToken);
+            var customer = await customerService.UpdateAsync(
+                new UpdateCustomerCommand(id, request),
+                cancellationToken);
             return customer is null
                 ? TypedResults.NotFound()
                 : TypedResults.Ok(customer);
@@ -88,10 +98,12 @@ public static class CustomerEndpoints
 
         customers.MapDelete("/{id:int}", async Task<Results<NoContent, NotFound>> (
             int id,
-            ICustomerService customerService,
+            ICustomerCommandService customerService,
             CancellationToken cancellationToken) =>
         {
-            var deleted = await customerService.DeleteAsync(id, cancellationToken);
+            var deleted = await customerService.DeleteAsync(
+                new DeleteCustomerCommand(id),
+                cancellationToken);
             return deleted ? TypedResults.NoContent() : TypedResults.NotFound();
         })
         .WithName("DeleteCustomer")
